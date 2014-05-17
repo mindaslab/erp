@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Company:
+  = @contact.company
+%p
+  %b Name:
+  = @contact.name
+%p
+  %b Ph:
+  = @contact.ph
+%p
+  %b Email:
+  = @contact.email
+%p
+  %b Address:
+  = @contact.address
+%p
+  %b City:
+  = @contact.city
+%p
+  %b Zip:
+  = @contact.zip
+%p
+  %b Country:
+  = @contact.country
+%p
+  %b Business:
+  = @contact.business
+%p
+  %b Customer:
+  = @contact.customer
+%p
+  %b Supplier:
+  = @contact.supplier
+%p
+  %b Employee:
+  = @contact.employee
+
+= link_to 'Edit', edit_contact_path(@contact)
+\|
+= link_to 'Back', contacts_path

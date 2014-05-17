@@ -1,0 +1,4 @@
+module RecordsHelper
+  def record_status_options
+  end
+end

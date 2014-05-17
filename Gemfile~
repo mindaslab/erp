@@ -59,7 +59,3 @@ gem 'devise'
 gem "less-rails"
 gem 'twitter-bootstrap-rails', git: "git@github.com:seyhunak/twitter-bootstrap-rails.git", branch: "bootstrap3"
 
-# Use country_select
-gem "country_select"
-
-

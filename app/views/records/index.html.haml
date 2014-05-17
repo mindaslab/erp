@@ -1,0 +1,25 @@
+%h1 Listing records
+
+%table
+  %tr
+    %th Amount
+    %th Description
+    %th Book
+    %th Status
+    %th
+    %th
+    %th
+
+  - @records.each do |record|
+    %tr
+      %td= record.amount
+      %td= record.description
+      %td= record.book
+      %td= record.status
+      %td= link_to 'Show', record
+      %td= link_to 'Edit', edit_record_path(record)
+      %td= link_to 'Destroy', record, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Record', new_record_path

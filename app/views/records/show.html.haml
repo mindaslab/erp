@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Amount:
+  = @record.amount
+%p
+  %b Description:
+  = @record.description
+%p
+  %b Book:
+  = @record.book
+%p
+  %b Status:
+  = @record.status
+
+= link_to 'Edit', edit_record_path(@record)
+\|
+= link_to 'Back', records_path

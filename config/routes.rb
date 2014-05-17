@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :contacts
+
+  devise_for :users
+  resources :records
+
   resources :books
 
   resources :companies
