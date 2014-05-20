@@ -1,0 +1,11 @@
+%ul.nav.nav-pills.nav-stacked
+  %li= link_to "Home", "/", class: "btn btn-default"
+  %li= link_to @company.name, @company, class: "btn btn-default"
+  %li= link_to @book.name, company_book_path(@company, @book), class: "btn btn-default"
+  %li= link_to "Income: 1234567.00/-", "#", class: "btn btn-default"
+  %li= link_to "Expense: 1234567.00/-", "#", class: "btn btn-default"
+  %li= link_to "Pen-Income: 1234567.00/-", "#", class: "btn btn-default"
+  %li= link_to "Pen-Expense: 1234567.00/-", "#", class: "btn btn-default"
+  %li= link_to "Edit", edit_company_book_path(@company, @book), class: "btn btn-default"
+  %li= link_to "Delete", [@company, @book], class: "btn btn-default", method: :delete,
+      "data-confirm" => "Do you really want to delete?"

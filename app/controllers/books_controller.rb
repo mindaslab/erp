@@ -14,21 +14,25 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
+    @company = Company.find params[:company_id]
     @book = Book.new
   end
 
   # GET /books/1/edit
   def edit
+    @company = @book.company
   end
 
   # POST /books
   # POST /books.json
   def create
+    @company = Company.find params[:company_id]
     @book = Book.new(book_params)
+    @book.company = @company
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to [@company, @book], notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -41,8 +45,9 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1.json
   def update
     respond_to do |format|
+      @book.company = @company
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to [@company, @book], notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }
@@ -64,7 +69,8 @@ class BooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
-      @book = Book.find(params[:id])
+      @company = Company.find params[:company_id]
+      @book = @company.books.where(id: params[:id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

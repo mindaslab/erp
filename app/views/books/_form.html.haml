@@ -1,4 +1,4 @@
-= form_for(@book, html:{class: "form-horizontal"}) do |f|
+= form_for([@company, @book], html:{class: "form-horizontal"}) do |f|
   - if @book.errors.any?
     #error_explanation
       %h2= "#{pluralize(@book.errors.count, "error")} prohibited this book from being saved:"
@@ -16,5 +16,4 @@
       = f.text_area :description, class: "form-control"
    
   .actions.col-sm-offset-2.col-sm-6
-    = hidden_field_tag "book[company_id]", 1
     = f.submit 'Save', class: "btn btn-default"
