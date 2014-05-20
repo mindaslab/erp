@@ -1,4 +1,5 @@
 class RecordsController < ApplicationController
+  before_action :set_company_and_book
   before_action :set_record, only: [:show, :edit, :update, :destroy]
 
   # GET /records
@@ -65,6 +66,11 @@ class RecordsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_record
       @record = Record.find(params[:id])
+    end
+    
+    def set_company_and_book
+      @company = Company.find params[:company_id]
+      @book = @company.books.where(id: params[:book_id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

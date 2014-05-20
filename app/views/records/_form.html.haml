@@ -1,4 +1,4 @@
-= form_for(@record, html:{class: "form-horizontal"}) do |f|
+= form_for([@company, @book, @record], html:{class: "form-horizontal"}) do |f|
   - if @record.errors.any?
     #error_explanation
       %h2= "#{pluralize(@record.errors.count, "error")} prohibited this record from being saved:"
@@ -19,6 +19,4 @@
     .col-sm-6
       = f.select :status, record_status_options, class: "form-control"
   .actions.col-sm-offset-2.col-sm-6
-    = hidden_field_tag "record[book_id]", 1
-    .col-sm-6
-      = f.submit 'Save', class: "btn btn-default"
+    = f.submit 'Save', class: "btn btn-default"
