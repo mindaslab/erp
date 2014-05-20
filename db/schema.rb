@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516065634) do
+ActiveRecord::Schema.define(version: 20140520072110) do
 
   create_table "books", force: true do |t|
     t.string   "name"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140516065634) do
     t.string   "name"
     t.string   "ph"
     t.string   "email"
-    t.string   "address"
+    t.text     "address",    limit: 255
     t.string   "city"
     t.string   "zip"
     t.string   "country"

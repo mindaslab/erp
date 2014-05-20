@@ -1,4 +1,4 @@
-= form_for @contact do |f|
+= form_for(@contact, html:{class: "form-horizontal"}) do |f|
   - if @contact.errors.any?
     #error_explanation
       %h2= "#{pluralize(@contact.errors.count, "error")} prohibited this contact from being saved:"
@@ -6,41 +6,55 @@
         - @contact.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :company
-    = f.text_field :company
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :ph
-    = f.text_field :ph
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :address
-    = f.text_field :address
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :zip
-    = f.text_field :zip
-  .field
-    = f.label :country
-    = f.country_select :country
-  .field
-    = f.label :business
-    = f.check_box :business
-  .field
-    = f.label :customer
-    = f.check_box :customer
-  .field
-    = f.label :supplier
-    = f.check_box :supplier
-  .field
-    = f.label :employee
-    = f.check_box :employee
-  .actions
-    = f.submit 'Save'
+  .field.form-group
+    = f.label :company, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.text_field :company, class: "form-control"
+  .field.form-group
+    = f.label :name, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.text_field :name, class: "form-control"
+  .field.form-group
+    = f.label :ph, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.text_field :ph, class: "form-control"
+  .field.form-group
+    = f.label :email, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.text_field :email, class: "form-control"
+  .field.form-group
+    = f.label :address, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.text_area :address, class: "form-control"
+  .field.form-group
+    = f.label :city, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.text_field :city, class: "form-control"
+  .field.form-group
+    = f.label :zip, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.text_field :zip, class: "form-control"
+  .field.form-group
+    = f.label :country, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.country_select :country, class: "form-control"
+  .field.form-group
+    = f.label :business, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.check_box :business, class: "form-control"
+  .field.form-group
+    = f.label :customer, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.check_box :customer, class: "form-control"
+  .field.form-group
+    = f.label :supplier, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.check_box :supplier, class: "form-control"
+  .field.form-group
+    = f.label :employee, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.check_box :employee, class: "form-control"
+  .actions.col-sm-offset-2.col-sm-6
+    = hidden_field_tag "contact[company_id]", 1
+    .col-sm-6
+      = f.submit 'Save', class: "btn btn-default"
