@@ -8,8 +8,8 @@
   %body
     .row
       .col-md-3
-        This is cool
-      .col-md-9
+        =render partial: "common/side_bar" 
+      .col-md-8
         - unless notice.nil?
           %p.notice= notice
         - unless alert.nil?
