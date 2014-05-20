@@ -1,4 +1,4 @@
-= form_for @book do |f|
+= form_for(@book, html:{class: "form-horizontal"}) do |f|
   - if @book.errors.any?
     #error_explanation
       %h2= "#{pluralize(@book.errors.count, "error")} prohibited this book from being saved:"
@@ -6,14 +6,15 @@
         - @book.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :company
-    = f.text_field :company
-  .actions
-    = f.submit 'Save'
+  .field.form-group
+    = f.label :name, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.text_field :name, class: "form-control"
+  .field.form-group
+    = f.label :description, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.text_area :description, class: "form-control"
+   
+  .actions.col-sm-offset-2.col-sm-6
+    = hidden_field_tag "book[company_id]", 1
+    = f.submit 'Save', class: "btn btn-default"
