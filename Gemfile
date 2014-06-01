@@ -62,4 +62,6 @@ gem 'twitter-bootstrap-rails', git: "git@github.com:seyhunak/twitter-bootstrap-r
 # Use country_select
 gem "country_select"
 
+# Use font-awesome
+gem 'font-awesome-sass'
 

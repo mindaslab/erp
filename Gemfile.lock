@@ -65,6 +65,8 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    font-awesome-sass (4.1.0)
+      sass (~> 3.2)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -185,6 +187,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   country_select
   devise
+  font-awesome-sass
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
