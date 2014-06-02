@@ -1,8 +1,10 @@
-%tr
-  %td= record.time
+%tr{class: record_color(record)}
+  %td= record.time.to_s(:short)
   %td= record.description
   %td= record.amount
   %td
-    = link_to "Edit", edit_company_book_record_path(@company, @book, record)
+    = link_to "Edit", edit_company_book_record_path(@company, @book, record),
+      class: "btn btn-default btn-sm"
     = link_to "Delete", company_book_record_path(@company, @book, record),
-      method: :delete, "data-confirm" => "Really want to delete record?"
+      method: :delete, "data-confirm" => "Really want to delete record?",
+      class: "btn btn-default btn-sm"

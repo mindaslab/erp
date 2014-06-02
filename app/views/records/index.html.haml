@@ -7,6 +7,13 @@
     = link_to 'Add Record', new_company_book_record_path(@company, @book), class: "btn btn-default"
     .pull-right
       = render partial: "common/search_form"
+  .panel-footer
+    %ul
+      %li= "Income: #{@book.income}"
+      %li= "Expense: #{@book.expense}"
+      %li= "Pen-Inc: #{@book.pending_income}"
+      %li= "Pen-Exp: #{@book.pending_expense}"
+      %li= "Balance: #{@book.balance}"
 
 %table.table
   %tr
