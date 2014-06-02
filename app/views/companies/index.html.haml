@@ -1,5 +1,8 @@
-= link_to 'New Company', new_company_path, class: "btn btn-default"
+.panel
+  .panel-body
+    = link_to 'New Company', new_company_path, class: "btn btn-default"
+    .pull-right
+      = render partial: "common/search_form"
 
-%ul
-  = render @companies
+= render @companies
 

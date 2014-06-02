@@ -1,11 +1,10 @@
-%h1 Listing books
+.panel
+  .panel-body
+    = link_to raw('<span class="glyphicon glyphicon-home"></span>'), root_path,
+      class: "btn btn-default"
+    = link_to @company.name, "#", class: "btn btn-default"
+    = link_to 'New Book', new_company_book_path(@company), class: "btn btn-default"
+    .pull-right
+      = render partial: "common/search_form"
 
-%table.table.table-stripped
-  %tr
-    %th Book name
-    %th Income
-    %th Expense
-    %th Pen - Income
-    %th Pen - Expense
-    %th Balance
-  = render @books
+= render @books
