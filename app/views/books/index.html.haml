@@ -1,3 +1,11 @@
 %h1 Listing books
 
-= render @books
+%table.table.table-stripped
+  %tr
+    %th Book name
+    %th Income
+    %th Expense
+    %th Pen - Income
+    %th Pen - Expense
+    %th Balance
+  = render @books
