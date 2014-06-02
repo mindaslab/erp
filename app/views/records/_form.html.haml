@@ -11,6 +11,10 @@
     .col-sm-6
       = f.text_field :amount, class: "form-control"
   .field.form-group
+    = f.label :time, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.datetime_select :time, class: "form-control"
+  .field.form-group
     = f.label :description, class: "col-sm-2 control-label"
     .col-sm-6
       = f.text_area :description, class: "form-control"

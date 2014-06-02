@@ -1,25 +1,10 @@
-%h1 Listing records
+= link_to "Add Record", new_company_book_record_path(@company, @book)
 
-%table
+%table.table
   %tr
-    %th Amount
+    %th Time
     %th Description
-    %th Book
-    %th Status
-    %th
-    %th
-    %th
+    %th Amount
+    %th Actions
+  = render @records
 
-  - @records.each do |record|
-    %tr
-      %td= record.amount
-      %td= record.description
-      %td= record.book
-      %td= record.status
-      %td= link_to 'Show', record
-      %td= link_to 'Edit', edit_record_path(record)
-      %td= link_to 'Destroy', record, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Record', new_record_path

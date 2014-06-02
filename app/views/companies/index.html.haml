@@ -1,15 +1,5 @@
-%h1 Listing companies
+= link_to 'New Company', new_company_path, class: "btn btn-default"
 
-%table.table.table-stripped
-  %tr
-    %th Company
-    %th Income
-    %th Expense
-    %th Pen - Income
-    %th Pen - Expense
-    %th Balance
-  =render @companies
-  
+%ul
+  = render @companies
 
-
-= link_to 'New Company', new_company_path

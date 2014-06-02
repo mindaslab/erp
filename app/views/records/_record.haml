@@ -1,0 +1,8 @@
+%tr
+  %td= record.time
+  %td= record.description
+  %td= record.amount
+  %td
+    = link_to "Edit", edit_company_book_record_path(@company, @book, record)
+    = link_to "Delete", company_book_record_path(@company, @book, record),
+      method: :delete, "data-confirm" => "Really want to delete record?"

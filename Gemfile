@@ -65,3 +65,5 @@ gem "country_select"
 # Use font-awesome
 gem 'font-awesome-sass'
 
+# Use browser time zone
+gem 'browser-timezone-rails'

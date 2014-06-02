@@ -1,7 +1,4 @@
-%tr
-  %td= link_to company.name, company
-  %td
-  %td
-  %td
-  %td
-  %td
+%li
+  = link_to company.name, company
+  ,
+  = link_to "#{company.books.count} Books", company_books_path(company)

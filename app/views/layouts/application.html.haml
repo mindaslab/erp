@@ -6,13 +6,10 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .row
-      .col-md-3
-        =render partial: "common/side_bar" 
-      .col-md-8
-        - unless notice.nil?
-          %p.notice= notice
-        - unless alert.nil?
-          %p.alert= alert
-        = yield
+    .container-fluid
+      - unless notice.nil?
+        %p.notice= notice
+      - unless alert.nil?
+        %p.alert= alert
+      = yield
 

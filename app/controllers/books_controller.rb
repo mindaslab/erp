@@ -1,10 +1,11 @@
 class BooksController < ApplicationController
+  before_action :set_company 
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = @company.books
   end
 
   # GET /books/1
@@ -67,9 +68,12 @@ class BooksController < ApplicationController
   end
 
   private
+    def set_company
+      @company = Company.find params[:company_id]
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_book
-      @company = Company.find params[:company_id]
       @book = @company.books.where(id: params[:id]).first
     end
 

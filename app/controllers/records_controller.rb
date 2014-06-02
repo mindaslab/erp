@@ -26,10 +26,10 @@ class RecordsController < ApplicationController
   # POST /records.json
   def create
     @record = Record.new(record_params)
-
+    @record.book = @book
     respond_to do |format|
       if @record.save
-        format.html { redirect_to @record, notice: 'Record was successfully created.' }
+        format.html { redirect_to company_book_records_path(@company, @book), notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @record }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class RecordsController < ApplicationController
   def destroy
     @record.destroy
     respond_to do |format|
-      format.html { redirect_to records_url }
+      format.html { redirect_to :back, notice: "Record deleted successfully." }
       format.json { head :no_content }
     end
   end
@@ -75,6 +75,6 @@ class RecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
-      params.require(:record).permit(:amount, :description, :book_id, :status)
+      params.require(:record).permit(:amount, :description, :book_id, :status, :time)
     end
 end
