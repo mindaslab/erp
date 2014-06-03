@@ -2,6 +2,9 @@ class Book < ActiveRecord::Base
   belongs_to :company
   has_many :records
   validates :name, presence: true
+  SearchableColumns = [:name, :description]
+  
+  include Searchable
   
   def income
     records.income.sum(:amount)

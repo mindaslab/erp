@@ -33,7 +33,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to [@company, @book], notice: 'Book was successfully created.' }
+        format.html { redirect_to company_book_records_path(@company, @book), notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }

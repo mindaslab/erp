@@ -5,7 +5,7 @@ class RecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    @records = Record.all
+    @records = @book.records.order("time desc")
   end
 
   # GET /records/1
