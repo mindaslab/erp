@@ -7,9 +7,7 @@
     = csrf_meta_tags
   %body
     .container-fluid
-      - unless notice.nil?
-        %p.notice= notice
-      - unless alert.nil?
-        %p.alert= alert
+      .row
+        .col-md-6.col-md-offset-3= render partial: "common/alerts"
       = yield
 

@@ -1,0 +1,6 @@
+- unless notice.nil?
+  %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+  .alert.alert-success.fade.in= notice
+- unless alert.nil?
+  %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+  .alert.alert-success.fade.in= alert
