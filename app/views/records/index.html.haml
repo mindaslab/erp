@@ -9,11 +9,11 @@
       = render partial: "common/search_form"
   .panel-footer
     %ul.tranx-brief
-      %li= "Income: #{@book.income}"
-      %li= "Expense: #{@book.expense}"
-      %li= "Pen-Inc: #{@book.pending_income}"
-      %li= "Pen-Exp: #{@book.pending_expense}"
-      %li= "Balance: #{@book.balance}"
+      %li= "Income: #{@book.currency} #{@book.income}"
+      %li= "Expense: #{@book.currency} #{@book.expense}"
+      %li= "Pen-Inc: #{@book.currency} #{@book.pending_income}"
+      %li= "Pen-Exp: #{@book.currency} #{@book.pending_expense}"
+      %li= "Balance: #{@book.currency} #{@book.balance}"
 
 %table.table
   %tr

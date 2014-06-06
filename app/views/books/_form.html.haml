@@ -11,6 +11,10 @@
     .col-sm-6
       = f.text_field :name, class: "form-control"
   .field.form-group
+    = f.label :currency, class: "col-sm-2 control-label"
+    .col-sm-6
+      = f.currency_select :currency, class: "form-control"
+  .field.form-group
     = f.label :description, class: "col-sm-2 control-label"
     .col-sm-6
       = f.text_area :description, class: "form-control"

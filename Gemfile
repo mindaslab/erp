@@ -67,3 +67,7 @@ gem 'font-awesome-sass'
 
 # Use browser time zone
 gem 'browser-timezone-rails'
+
+# Use currency select
+gem 'currency_select', '~> 0.1.4'
+ 
