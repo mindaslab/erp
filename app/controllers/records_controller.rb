@@ -8,11 +8,10 @@ class RecordsController < ApplicationController
   def index
     @records = @book.records.order("time desc")
     @records = @records.search(params[:s]) unless params[:s].empty? if params[:s]
-    @income = @records.income.sum(:amount)
-    @expense = @records.expense.sum(:amount)
-    @pending_income = @records.pending_income.sum(:amount)
-    @pending_expense = @records.pending_expense.sum(:amount)
-    @balance = @income - @expense
+    @records = @records.send(params[:t]) if Record.statuses.keys.index(params[:t])
+    income = @records.income.sum(:amount)
+    expense = @records.expense.sum(:amount)
+    @balance = income - expense
   end
 
   # GET /records/1

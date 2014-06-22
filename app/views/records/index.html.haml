@@ -9,10 +9,8 @@
       = render partial: "common/search_form"
   .panel-footer
     %ul.tranx-brief
-      %li= "Income: #{@book.currency} #{@income}"
-      %li= "Expense: #{@book.currency} #{@expense}"
-      %li= "Pen-Inc: #{@book.currency} #{@pending_income}"
-      %li= "Pen-Exp: #{@book.currency} #{@pending_expense}"
+      - Record.statuses.keys.each do |key| 
+        %li= money_link @records, @book, key, params[:s]
       %li= "Balance: #{@book.currency} #{@balance}"
 
 %table.table
