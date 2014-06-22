@@ -3,17 +3,17 @@
     = link_to raw('<span class="glyphicon glyphicon-home"></span>'), root_path,
       class: "btn btn-default"
     = link_to @company.name, company_books_path(@company), class: "btn btn-default"
-    = link_to @book.name, "#", class: "btn btn-default"
+    = link_to @book.name, company_book_records_path(@company, @book), class: "btn btn-default"
     = link_to 'Add Record', new_company_book_record_path(@company, @book), class: "btn btn-default"
     .pull-right
       = render partial: "common/search_form"
   .panel-footer
     %ul.tranx-brief
-      %li= "Income: #{@book.currency} #{@book.income}"
-      %li= "Expense: #{@book.currency} #{@book.expense}"
-      %li= "Pen-Inc: #{@book.currency} #{@book.pending_income}"
-      %li= "Pen-Exp: #{@book.currency} #{@book.pending_expense}"
-      %li= "Balance: #{@book.currency} #{@book.balance}"
+      %li= "Income: #{@book.currency} #{@income}"
+      %li= "Expense: #{@book.currency} #{@expense}"
+      %li= "Pen-Inc: #{@book.currency} #{@pending_income}"
+      %li= "Pen-Exp: #{@book.currency} #{@pending_expense}"
+      %li= "Balance: #{@book.currency} #{@balance}"
 
 %table.table
   %tr

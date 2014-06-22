@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+  has_many :companies
+  
   def can_collaborate? book
     book.user == self
   end

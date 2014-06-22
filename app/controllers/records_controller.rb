@@ -1,4 +1,5 @@
 class RecordsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_company_and_book
   before_action :set_record, only: [:show, :edit, :update, :destroy]
 
@@ -6,6 +7,12 @@ class RecordsController < ApplicationController
   # GET /records.json
   def index
     @records = @book.records.order("time desc")
+    @records = @records.search(params[:s]) unless params[:s].empty? if params[:s]
+    @income = @records.income.sum(:amount)
+    @expense = @records.expense.sum(:amount)
+    @pending_income = @records.pending_income.sum(:amount)
+    @pending_expense = @records.pending_expense.sum(:amount)
+    @balance = @income - @expense
   end
 
   # GET /records/1
@@ -69,7 +76,7 @@ class RecordsController < ApplicationController
     end
     
     def set_company_and_book
-      @company = Company.find params[:company_id]
+      @company = current_user.companies.find params[:company_id]
       @book = @company.books.where(id: params[:book_id]).first
     end
 

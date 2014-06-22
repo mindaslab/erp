@@ -7,6 +7,7 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = @company.books
+    @books = @books.search(params[:s]) unless params[:s].empty? if params[:s]
   end
 
   # GET /books/1
@@ -70,7 +71,7 @@ class BooksController < ApplicationController
 
   private
     def set_company
-      @company = Company.find params[:company_id]
+      @company = current_user.companies.find params[:company_id]
     end
     
     # Use callbacks to share common setup or constraints between actions.
