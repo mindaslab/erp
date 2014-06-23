@@ -73,4 +73,7 @@ gem 'currency_select', '~> 0.1.4'
 
 # Use kaminari
 gem 'kaminari'
+
+# Use bootstrap-kaminari-views
+gem 'bootstrap-kaminari-views'
  

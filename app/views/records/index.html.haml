@@ -12,5 +12,7 @@
     %th Description
     %th Amount
     %th Actions
-  = render @records
+  = render @records_page
+
+= paginate @records_page, :theme => 'twitter-bootstrap-3'
 

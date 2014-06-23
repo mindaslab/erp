@@ -9,6 +9,7 @@ class RecordsController < ApplicationController
     @records = @book.records.order("time desc")
     @records = @records.search(params[:s]) unless params[:s].empty? if params[:s]
     @records = @records.send(params[:t]) if Record.statuses.keys.index(params[:t])
+    @records_page = @records.page(params[:page]).per(50) # paginated records
     income = @records.income.sum(:amount)
     expense = @records.expense.sum(:amount)
     @balance = income - expense

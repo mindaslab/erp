@@ -42,6 +42,9 @@ GEM
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
+    bootstrap-kaminari-views (0.0.3)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     browser-timezone-rails (0.0.7)
       jquery-rails
       rails (>= 3.1)
@@ -194,6 +197,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-kaminari-views
   browser-timezone-rails
   coffee-rails (~> 4.0.0)
   country_select
