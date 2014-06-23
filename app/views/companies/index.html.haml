@@ -1,10 +1,4 @@
-.panel
-  .panel-body
-    = link_to raw('<span class="glyphicon glyphicon-home"></span>'), root_path,
-      class: "btn btn-default"
-    = link_to 'New Company', new_company_path, class: "btn btn-default"
-    .pull-right
-      = render partial: "common/search_form"
+= render partial: 'top_bar'
 
 = render @companies
 

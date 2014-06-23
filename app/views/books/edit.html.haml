@@ -1,4 +1,10 @@
-%h1 Editing book
+= render partial: 'top_bar'
+
+%h1
+  Editing
+  = @company.name
+  \/
+  = @book.name
 
 = render 'form'
 

@@ -68,6 +68,9 @@ gem 'font-awesome-sass'
 # Use browser time zone
 gem 'browser-timezone-rails'
 
-# Use currency select
+# Use currency_select
 gem 'currency_select', '~> 0.1.4'
+
+# Use kaminari
+gem 'kaminari'
  

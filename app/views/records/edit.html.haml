@@ -1,3 +1,10 @@
-%h1 Editing record
+.panel
+  = render partial: 'top_bar'
+%h2
+  Editing
+  = @company.name
+  \/
+  = @book.name
+  \/ record
 
 = render 'form'
