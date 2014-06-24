@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = current_user.companies
+    @companies = current_user.companies.order(:name).page(params[:page]).per(10)
     @companies = @companies.search(params[:s]) unless params[:s].empty? if params[:s]
   end
 

@@ -1,3 +1,6 @@
 = render partial: 'top_bar'
 
-= render @books
+.row= render @books
+
+.row
+  .col-md-12= paginate @books, :theme => 'twitter-bootstrap-3'

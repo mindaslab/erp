@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = @company.books
+    @books = @company.books.order(:name).page(params[:page]).per(10)
     @books = @books.search(params[:s]) unless params[:s].empty? if params[:s]
   end
 
