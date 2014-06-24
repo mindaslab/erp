@@ -2,6 +2,7 @@
   %td= record.time.to_s(:short)
   %td= record.description
   %td= record.amount
+  %td= record.status.gsub(/_/, ' ').capitalize
   %td
     = link_to "Edit", edit_company_book_record_path(@company, @book, record),
       class: "btn btn-default btn-sm"
