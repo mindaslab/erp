@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :company
-  has_many :records
+  has_many :records, dependent: :destroy
   validates :name, presence: true
   SearchableColumns = [:name, :description]
   
