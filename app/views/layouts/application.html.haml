@@ -1,19 +1,10 @@
 !!!
 %html
-  %head
-    %title Erp
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+  %head= render partial: "common/head"
   %body
     .container-fluid
       .row
         .col-md-6.col-md-offset-3= render partial: "common/alerts"
       = yield
-      .row
-        %footer
-          %hr
-          %ul
-            %li= link_to "Updates", "https://dspora.org/u/coin71"
-            %li= link_to "Code", "https://github.com/mindaslab/erp"
+      = render partial: "common/footer"
 

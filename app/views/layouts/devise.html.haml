@@ -1,0 +1,20 @@
+!!!
+%html
+  %head= render partial: "common/head"
+  %body
+    %nav.navbar.navbar-inverse.navbar-static-top{"role"=>"navigation"}
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name), html:{class: "navbar-form navbar-right"}) do |f|
+        = f.label :email
+        = f.email_field :email, :autofocus => true
+        = f.label :password
+        = f.password_field :password
+        - if devise_mapping.rememberable?
+          %div
+            = f.check_box :remember_me
+            = f.label :remember_me
+        %div= f.submit "Sign in", class: "btn btn-success"
+    .container-fluid
+      .row
+        .col-md-6.col-md-offset-3= render partial: "common/alerts"
+      = yield
+      = render partial: "common/footer"
