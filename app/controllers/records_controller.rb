@@ -10,9 +10,10 @@ class RecordsController < ApplicationController
     @records = @records.search(params[:s]) unless params[:s].empty? if params[:s]
     @records = @records.send(params[:t]) if Record.statuses.keys.index(params[:t])
     @records_page = @records.page(params[:page]).per(50) # paginated records
-    income = @records.income.sum(:amount)
+    revenue = @records.revenue.sum(:amount)
     expense = @records.expense.sum(:amount)
-    @balance = income - expense
+    @income = revenue - expense
+    @balance = @income + @records.credit.sum(:amount) - @records.draw.sum(:amount)
   end
 
   # GET /records/1

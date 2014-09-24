@@ -1,0 +1,13 @@
+= form_for([@company, @collab]) do |f|
+  - if @collab.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@collab.errors.count, "error")} prohibited this collab from being saved:"
+      %ul
+        - @collab.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :email
+    = f.text_field :email
+  .actions
+    = f.submit 'Save'

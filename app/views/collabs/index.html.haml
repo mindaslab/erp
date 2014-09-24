@@ -1,0 +1,22 @@
+%h1 Listing collabs
+
+%table
+  %tr
+    %th Email
+    %th Company
+    %th
+    %th
+    %th
+
+  - @collabs.each do |collab|
+    %tr
+      %td= collab.email
+      %td= collab.company
+      %td= link_to 'Show', company_collab_path(collab.company, collab)
+      %td= link_to 'Edit', edit_company_collab_path(collab.company, collab)
+      %td= link_to 'Destroy', company_collab_path(collab.company, collab),
+      :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Collab', new_company_collab_path

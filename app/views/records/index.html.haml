@@ -4,6 +4,7 @@
     %ul.tranx-brief
       - Record.statuses.keys.each do |key| 
         %li= money_link @records, @book, key, params[:s]
+      %li= "Income: #{@book.currency} #{@income}"
       %li= "Balance: #{@book.currency} #{@balance}"
 
 %table.table

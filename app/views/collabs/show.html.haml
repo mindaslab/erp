@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Email:
+  = @collab.email
+%p
+  %b Company:
+  = @collab.company
+
+= link_to 'Edit', edit_collab_path(@collab)
+\|
+= link_to 'Back', collabs_path

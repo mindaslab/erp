@@ -6,23 +6,23 @@ class Book < ActiveRecord::Base
   
   include Searchable
   
-  def income
-    records.income.sum(:amount)
+  def revenue
+    records.revenue.sum(:amount)
   end
   
   def expense
     records.expense.sum(:amount)
   end
   
-  def pending_income
-    records.pending_income.sum(:amount)
+  def pending_revenue
+    records.pending_revenue.sum(:amount)
   end
   
   def pending_expense
     records.pending_expense.sum(:amount)
   end
   
-  def balance
-    income - expense
+  def income
+    revenue - expense
   end
 end

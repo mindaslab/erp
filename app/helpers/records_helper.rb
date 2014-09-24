@@ -5,11 +5,11 @@ module RecordsHelper
   
   def record_color(record)
     case record.status
-      when "income"
+      when "revenue"
         "success"
       when "expense"
         "danger"
-      when "pending_income"
+      when "pending_revenue"
         "info"
       when "pending_expense"
         "warning"

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  
+
   devise_for :users
 
   resources :companies do
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
       resources :records
     end
     
+    resources :collabs
     resources :contacts
   end
 
