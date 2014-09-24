@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :friends]
 
   # GET /companies
   # GET /companies.json
@@ -62,6 +62,9 @@ class CompaniesController < ApplicationController
       format.html { redirect_to companies_url }
       format.json { head :no_content }
     end
+  end
+
+  def friends
   end
 
   private

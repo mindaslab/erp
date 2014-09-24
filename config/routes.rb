@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     
     resources :collabs
     resources :contacts
+
+    member do
+      get "friends"
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

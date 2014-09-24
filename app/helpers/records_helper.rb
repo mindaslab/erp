@@ -1,6 +1,6 @@
 module RecordsHelper
   def record_status_options
-    Record.statuses.collect{ |k,v| [k.gsub(/_/, " ").capitalize, k]}
+    Record.statuses.collect{ |k,v| [k.gsub(/_/, " ").capitalize, k]}.sort
   end
   
   def record_color(record)

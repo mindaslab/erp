@@ -4,7 +4,7 @@
       .panel-title= link_to company.name, company_books_path(company)
     .panel-body
       = link_to pluralize(company.books.count, "Book"), company_books_path(company), class: "btn btn-default"
-      = link_to "0 Friends", "#", class: "btn btn-default"
+      = link_to pluralize(company.collaborators.count, "Friend"), friends_company_path(company), class: "btn btn-default"
       = link_to "Edit", edit_company_path(company), class: "btn btn-default"
       = link_to "Delete", company, method: :delete, class: "btn btn-default", "data-confirm" => "Really want to delete this company?"
     .panel-footer= company.description
