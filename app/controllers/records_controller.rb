@@ -1,6 +1,8 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_company_and_book
+  before_action :set_company
+  before_action :check_user_is_collaborator
+  before_action :set_book
   before_action :set_record, only: [:show, :edit, :update, :destroy]
 
   # GET /records
@@ -76,14 +78,21 @@ class RecordsController < ApplicationController
     def set_record
       @record = Record.find(params[:id])
     end
-    
-    def set_company_and_book
-      @company = current_user.companies.find params[:company_id]
+
+    def set_book
       @book = @company.books.where(id: params[:book_id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
       params.require(:record).permit(:amount, :description, :book_id, :status, :time)
+    end
+
+    def set_company
+      @company = current_user.get_company params[:company_id]
+    end
+    
+    def check_user_is_collaborator
+      redirect_to root_path, notice: "You are not autorised for this action." unless @company
     end
 end

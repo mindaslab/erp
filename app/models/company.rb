@@ -10,6 +10,6 @@ class Company < ActiveRecord::Base
   
   # Returns true if the user can collaborate for the company
   def collaborator? user_obj
-    (self.user == user_obj) or (self.collaborators.index(user))
+    (self.user == user_obj) or (self.collaborators.index(user_obj))
   end
 end

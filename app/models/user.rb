@@ -10,4 +10,13 @@ class User < ActiveRecord::Base
   def can_collaborate? book
     book.user == self
   end
+
+  ##
+  # If the user can collaborate, then it returns the company
+  # whose id is company_id
+  def get_company company_id
+  	company = self.companies.find_by_id company_id
+    company ||= self.collab_companies.find_by_id company_id
+    company
+  end
 end
