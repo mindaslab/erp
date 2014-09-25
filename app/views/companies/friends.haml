@@ -12,3 +12,12 @@
       addedas friend.
 
 .row
+  .col-md-12
+    = form_tag(add_friend_company_path(@company)) do
+      = email_field_tag :email, nil,placeholder: "Enter email"
+      = submit_tag "Add Person"
+  %ul
+    - for collab in @company.collaborators do
+      %li
+        = collab.email
+        = link_to "Remove", remove_friend_company_path(@company, collab_id: collab.id), method: :delete

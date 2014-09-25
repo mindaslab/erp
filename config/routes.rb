@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
     member do
       get "friends"
+      post "add_friend"
+      delete "remove_friend"
     end
   end
 

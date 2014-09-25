@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_company, only: [:show, :edit, :update, :destroy, :friends]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :friends,
+    :add_friend, :remove_friend]
 
   # GET /companies
   # GET /companies.json
@@ -69,12 +70,18 @@ class CompaniesController < ApplicationController
 
   def add_friend
     user = User.where(email: params[:email]).first
-    @company.users << user
+    if user
+      @company.collaborators << user
+      redirect_to :back, notice: "#{user.email} added"
+    else
+      redirect_to :back, notice: "#{params[:email]} not registered. Plese tell them to register and add them."
+    end
   end
 
   def remove_friend
-    user = User.where(email: params[:email]).first
-    @company.users.delete user
+    user = User.find(params[:collab_id])
+    @company.collaborators.delete user
+    redirect_to :back, notice: "#{user.email} removed from friends list"
   end
 
   private

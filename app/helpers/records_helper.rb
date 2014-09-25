@@ -13,6 +13,8 @@ module RecordsHelper
         "info"
       when "pending_expense"
         "warning"
+      when "loan"
+        "loan"
     end 
   end
   
