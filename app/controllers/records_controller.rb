@@ -13,7 +13,7 @@ class RecordsController < ApplicationController
     revenue = @records.revenue.sum(:amount)
     expense = @records.expense.sum(:amount)
     @income = revenue - expense
-    @balance = @income + @records.credit.sum(:amount) - @records.draw.sum(:amount)
+    @balance = @income + @records.capital.sum(:amount) - @records.draw.sum(:amount)
   end
 
   # GET /records/1

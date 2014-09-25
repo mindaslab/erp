@@ -1,5 +1,5 @@
 class Record < ActiveRecord::Base
-  enum status: [:revenue, :expense, :pending_revenue, :pending_expense, :credit, :draw]
+  enum status: [:revenue, :expense, :pending_revenue, :pending_expense, :capital, :draw, :loan]
   belongs_to :book
   SearchableColumns = [:description]
   
