@@ -1,6 +1,15 @@
 = render partial: 'top_bar'
 
+%h1 Your companies
+
 .row= render @companies
 
 .row
   .col-md-12= paginate @companies, :theme => 'twitter-bootstrap-3'
+
+%h1 Friends companies
+
+.row= render @collab_companies
+
+.row
+  .col-md-12= paginate @collab_companies, :theme => 'twitter-bootstrap-3'

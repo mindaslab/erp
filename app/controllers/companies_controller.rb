@@ -8,6 +8,8 @@ class CompaniesController < ApplicationController
   def index
     @companies = current_user.companies.order(:name).page(params[:page]).per(10)
     @companies = @companies.search(params[:s]) unless params[:s].empty? if params[:s]
+    @collab_companies = current_user.collab_companies.order(:name).page(params[:page]).per(10)
+    @collab_companies = @collab_companies.search(params[:s]) unless params[:s].empty? if params[:s]
   end
 
   # GET /companies/1
