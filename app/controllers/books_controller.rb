@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_company 
+  before_action :set_company
+  before_action :check_user_is_collaborator
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   # GET /books
@@ -69,11 +70,7 @@ class BooksController < ApplicationController
     end
   end
 
-  private
-    def set_company
-      @company = current_user.companies.find params[:company_id]
-    end
-    
+  private    
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = @company.books.where(id: params[:id]).first
@@ -83,4 +80,6 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:name, :description, :currency)
     end
+
+    include UserPermissionCheck
 end
