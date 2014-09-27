@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Record:
+  = @doc.record
+
+= link_to 'Edit', edit_doc_path(@doc)
+\|
+= link_to 'Back', docs_path

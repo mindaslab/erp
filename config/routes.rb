@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-
   devise_for :users
 
   resources :companies do
     resources :books do
-      resources :records
+      resources :records do
+        resources :docs
+      end
     end
     
     resources :collabs

@@ -1,0 +1,19 @@
+%h1 Listing docs
+
+%table
+  %tr
+    %th Record
+    %th
+    %th
+    %th
+
+  - @docs.each do |doc|
+    %tr
+      %td= doc.record
+      %td= link_to 'Show', doc
+      %td= link_to 'Edit', edit_doc_path(doc)
+      %td= link_to 'Destroy', doc, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Doc', new_doc_path

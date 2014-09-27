@@ -40,7 +40,7 @@ class RecordsController < ApplicationController
     @record.book = @book
     respond_to do |format|
       if @record.save
-        format.html { redirect_to company_book_records_path(@company, @book), notice: 'Record was successfully created.' }
+        format.html { redirect_to company_book_record_path(@company, @book, @record), notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @record }
       else
         format.html { render :new }
@@ -76,7 +76,7 @@ class RecordsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_record
-      @record = Record.find(params[:id])
+      @record = @book.records.find(params[:id])
     end
 
     def set_book
