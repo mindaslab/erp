@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003151728) do
+ActiveRecord::Schema.define(version: 20141003154141) do
 
   create_table "books", force: true do |t|
     t.string   "name"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20141003151728) do
   add_index "contacts", ["company_id"], name: "index_contacts_on_company_id"
 
   create_table "docs", force: true do |t|
-    t.integer  "record_id"
+    t.integer  "finance_record_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "file_file_name"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20141003151728) do
     t.datetime "file_updated_at"
   end
 
-  add_index "docs", ["record_id"], name: "index_docs_on_record_id"
+  add_index "docs", ["finance_record_id"], name: "index_docs_on_finance_record_id"
 
   create_table "finance_records", force: true do |t|
     t.decimal  "amount"

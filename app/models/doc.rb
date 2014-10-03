@@ -1,3 +1,3 @@
 class Doc < ActiveRecord::Base
-  belongs_to :record
+  belongs_to :finance_record
 end

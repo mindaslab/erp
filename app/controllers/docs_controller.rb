@@ -16,10 +16,10 @@ class DocsController < ApplicationController
   # POST /docs.json
   def create
     @doc = Doc.new(doc_params)
-    @doc.record = @record
+    @doc.finance_record = @finance_record
     respond_to do |format|
       if @doc.save
-        format.html { redirect_to @doc, notice: 'Doc was successfully created.' }
+        format.html { redirect_to :back, notice: 'File was successfully added.' }
         format.json { render :show, status: :created, location: @doc }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class DocsController < ApplicationController
     end
 
     def set_record
-      @record = @book.records.find(params[:record_id])
+      @record = @book.finance_records.find(params[:record_id])
     end
 
     def set_book
