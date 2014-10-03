@@ -76,4 +76,6 @@ gem 'kaminari'
 
 # Use bootstrap-kaminari-views
 gem 'bootstrap-kaminari-views'
- 
+
+# Use paperclip
+gem "paperclip", "~> 4.2" 

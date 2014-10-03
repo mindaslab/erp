@@ -13,7 +13,7 @@ describe "records/new" do
   it "renders new record form" do
     render
 
-    assert_select "form[action=?][method=?]", records_path, "post" do
+    assert_select "form[action=?][method=?]", finance_records_path, "post" do
       assert_select "input#record_amount[name=?]", "record[amount]"
       assert_select "textarea#record_description[name=?]", "record[description]"
       assert_select "input#record_book[name=?]", "record[book]"

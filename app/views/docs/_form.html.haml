@@ -1,0 +1,10 @@
+= form_for([@company, @book, @record, @doc]) do |f|
+  - if @doc.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@doc.errors.count, "error")} prohibited this doc from being saved:"
+      %ul
+        - @doc.errors.full_messages.each do |msg|
+          %li= msg
+  = f.file_field :file
+  .actions
+    = f.submit 'Save'

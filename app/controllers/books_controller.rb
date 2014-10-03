@@ -36,7 +36,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to company_book_records_path(@company, @book), notice: 'Book was successfully created.' }
+        format.html { redirect_to company_book_finance_records_path(@company, @book), notice: 'Book was successfully created.' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class BooksController < ApplicationController
     respond_to do |format|
       @book.company = @company
       if @book.update(book_params)
-        format.html {  redirect_to company_book_records_path(@company, @book), notice: 'Book was successfully updated.' }
+        format.html {  redirect_to company_book_finance_records_path(@company, @book), notice: 'Book was successfully updated.' }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }

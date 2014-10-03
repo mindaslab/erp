@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-
   devise_for :users
 
   resources :companies do
     resources :books do
-      resources :records
+      resources :finance_records do
+        resources :docs do
+          member do
+            get 'download'
+          end
+        end
+      end
     end
-    
+
     resources :collabs
     resources :contacts
 

@@ -4,7 +4,7 @@
   = link_to raw('<span class="glyphicon glyphicon-user"></span> Signout'), destroy_user_session_path,
     class: "btn btn-default", method: :delete
   = link_to @company.name, company_books_path(@company), class: "btn btn-default"
-  = link_to @book.name, company_book_records_path(@company, @book), class: "btn btn-default"
-  = link_to 'Add Record', new_company_book_record_path(@company, @book), class: "btn btn-default"
+  = link_to @book.name, company_book_finance_records_path(@company, @book), class: "btn btn-default"
+  = link_to 'Add Record', new_company_book_finance_record_path(@company, @book), class: "btn btn-default"
   .pull-right
     = render partial: "common/search_form"

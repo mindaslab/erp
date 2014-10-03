@@ -1,0 +1,13 @@
+%tr{class: record_color(finance_record)}
+  %td= "##{finance_record.sno}"
+  %td= finance_record.time.to_s(:short)
+  %td= link_to finance_record.description, company_book_finance_record_path(finance_record.book.company,
+  finance_record.book, finance_record)
+  %td= finance_record.amount
+  %td= finance_record.status.gsub(/_/, ' ').capitalize
+  %td
+    = link_to "Edit", edit_company_book_finance_record_path(@company, @book, finance_record),
+      class: "btn btn-default btn-sm"
+    = link_to "Delete", company_book_finance_record_path(@company, @book, finance_record),
+      method: :delete, confirm: "Really want to delete record?",
+      class: "btn btn-default btn-sm"

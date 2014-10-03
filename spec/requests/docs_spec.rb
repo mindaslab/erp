@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe "Records" do
-  describe "GET /records" do
+describe "Docs" do
+  describe "GET /docs" do
     it "works! (now write some real specs)" do
-      get finance_records_path
+      get docs_path
       expect(response.status).to be(200)
     end
   end

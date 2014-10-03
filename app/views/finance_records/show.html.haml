@@ -1,0 +1,35 @@
+.panel
+  = render partial: 'top_bar'
+
+%h2
+  = @company.name
+  \/
+  = @book.name
+  \/
+  \#
+  = @record.sno
+.row
+  .col-md-12
+    %p
+      %b Amount:
+      = @record.amount
+    %p
+      %b Description:
+      %p= @record.description
+    %p
+      %b Status:
+      = @record.status
+.row
+  .col-md-12
+    = link_to "Edit", edit_company_book_finance_record_path(@company, @book, @record),
+    class: "btn btn-xs btn-warning"
+    = link_to "Delete", company_book_finance_record_path(@company, @book, @record),
+    class: "btn btn-xs btn-danger", confirm: "Really want to delete record?",
+    method: :delete
+.row
+  .col-md-8
+    %h2 Notes
+  .col-md-4
+    %h2 Files
+    = render partial: "docs/form"
+    %ul= render @record.docs
