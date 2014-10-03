@@ -1,21 +1,26 @@
-.container-fluid
-  .row
-    .col-md-12
-      %p
-        %b Amount:
-        = @record.amount
-      %p
-        %b Description:
-        = @record.description
-      %p
-        %b Book:
-        = @record.book
-      %p
-        %b Status:
-        = @record.status
-  .row
-    .col-md-8
-      %h2 Notes
-    .col-md-4
-      %h2 Files
+.panel
+  = render partial: 'top_bar'
 
+%h2
+  = @company.name
+  \/
+  = @book.name
+  \/
+  \#
+  = @record.sno
+.row
+  .col-md-12
+    %p
+      %b Amount:
+      = @record.amount
+    %p
+      %b Description:
+      %p= @record.description
+    %p
+      %b Status:
+      = @record.status
+.row
+  .col-md-8
+    %h2 Notes
+  .col-md-4
+    %h2 Files

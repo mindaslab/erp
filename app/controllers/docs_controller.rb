@@ -1,6 +1,10 @@
 class DocsController < ApplicationController
-  before_action :set_doc, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  before_action :set_company
+  before_action :check_user_is_collaborator
+  before_action :set_book
+  before_action :set_record
+  before_action :set_doc, only: [:update, :destroy]
 
   # GET /docs/new
   def new
@@ -12,7 +16,7 @@ class DocsController < ApplicationController
   # POST /docs.json
   def create
     @doc = Doc.new(doc_params)
-
+    @doc.record = @record
     respond_to do |format|
       if @doc.save
         format.html { redirect_to @doc, notice: 'Doc was successfully created.' }
@@ -43,6 +47,16 @@ class DocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doc_params
-      params.require(:doc).permit(:record_id)
+      params.require(:doc).permit(:file)
     end
+
+    def set_record
+      @record = @book.records.find(params[:record_id])
+    end
+
+    def set_book
+      @book = @company.books.where(id: params[:book_id]).first
+    end
+
+    include UserPermissionCheck
 end
