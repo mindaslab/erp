@@ -22,6 +22,7 @@ class FinanceRecordsController < ApplicationController
   # GET /records/1
   # GET /records/1.json
   def show
+    @doc = Doc.new
   end
 
   # GET /records/new
