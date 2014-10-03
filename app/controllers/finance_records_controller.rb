@@ -1,4 +1,4 @@
-class RecordsController < ApplicationController
+class FinanceRecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_company
   before_action :check_user_is_collaborator
@@ -8,9 +8,9 @@ class RecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    @records = @book.records.order("time desc")
+    @records = @book.finance_records.order("time desc")
     @records = @records.search(params[:s]) unless params[:s].empty? if params[:s]
-    @records = @records.send(params[:t]) if Record.statuses.keys.index(params[:t])
+    @records = @records.send(params[:t]) if FinanceRecord.statuses.keys.index(params[:t])
     @records_page = @records.page(params[:page]).per(50) # paginated records
     revenue = @records.revenue.sum(:amount)
     expense = @records.expense.sum(:amount)
@@ -26,7 +26,7 @@ class RecordsController < ApplicationController
 
   # GET /records/new
   def new
-    @record = Record.new
+    @record = FinanceRecord.new
   end
 
   # GET /records/1/edit
@@ -36,11 +36,11 @@ class RecordsController < ApplicationController
   # POST /records
   # POST /records.json
   def create
-    @record = Record.new(record_params)
+    @record = FinanceRecord.new(record_params)
     @record.book = @book
     respond_to do |format|
       if @record.save
-        format.html { redirect_to company_book_record_path(@company, @book, @record), notice: 'Record was successfully created.' }
+        format.html { redirect_to company_book_finance_record_path(@company, @book, @record), notice: 'Record was successfully created.' }
         format.json { render :show, status: :created, location: @record }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class RecordsController < ApplicationController
   def update
     respond_to do |format|
       if @record.update(record_params)
-        format.html { redirect_to company_book_record_path(@company, @book, @record), notice: 'Record was successfully updated.' }
+        format.html { redirect_to company_book_finance_record_path(@company, @book, @record), notice: 'Record was successfully updated.' }
         format.json { render :show, status: :ok, location: @record }
       else
         format.html { render :edit }
@@ -68,14 +68,14 @@ class RecordsController < ApplicationController
   def destroy
     @record.destroy
     respond_to do |format|
-      format.html { redirect_to company_book_records_path(@company, @book), notice: "Record deleted successfully." }
+      format.html { redirect_to company_book_finance_records_path(@company, @book), notice: "Record deleted successfully." }
       format.json { head :no_content }
     end
   end
 
   private
     def set_record
-      @record = @book.records.find(params[:id])
+      @record = @book.finance_records.find(params[:id])
     end
 
     def set_book
@@ -84,7 +84,7 @@ class RecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
-      params.require(:record).permit(:amount, :description, :book_id, :status, :time)
+      params.require(:finance_record).permit(:amount, :description, :book_id, :status, :time)
     end
 
     include UserPermissionCheck

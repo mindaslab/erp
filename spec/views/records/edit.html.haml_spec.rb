@@ -13,7 +13,7 @@ describe "records/edit" do
   it "renders the edit record form" do
     render
 
-    assert_select "form[action=?][method=?]", record_path(@record), "post" do
+    assert_select "form[action=?][method=?]", finance_record_path(@record), "post" do
       assert_select "input#record_amount[name=?]", "record[amount]"
       assert_select "textarea#record_description[name=?]", "record[description]"
       assert_select "input#record_book[name=?]", "record[book]"

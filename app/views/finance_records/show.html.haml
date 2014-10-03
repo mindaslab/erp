@@ -21,10 +21,10 @@
       = @record.status
 .row
   .col-md-12
-    = link_to "Edit", edit_company_book_record_path(@company, @book, @record),
+    = link_to "Edit", edit_company_book_finance_record_path(@company, @book, @record),
     class: "btn btn-xs btn-warning"
-    = link_to "Delete", company_book_record_path(@company, @book, @record),
-    class: "btn btn-xs btn-danger", confirm: "Do you really want to delete thi record?",
+    = link_to "Delete", company_book_finance_record_path(@company, @book, @record),
+    class: "btn btn-xs btn-danger", confirm: "Really want to delete record?",
     method: :delete
 .row
   .col-md-8

@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   resources :companies do
     resources :books do
-      resources :records do
+      resources :finance_records do
         resources :docs
       end
     end
-    
+
     resources :collabs
     resources :contacts
 

@@ -1,4 +1,4 @@
-class Record < ActiveRecord::Base
+class FinanceRecord < ActiveRecord::Base
   enum status: [:revenue, :expense, :pending_revenue, :pending_expense,
     :capital, :draw, :loan_taken]
   belongs_to :book
@@ -9,6 +9,6 @@ class Record < ActiveRecord::Base
 
   private
   def assign_sno
-    self.sno = self.book.records.maximum(:sno) + 1
+    self.sno = self.book.finance_records.maximum(:sno).to_i + 1
   end
 end
