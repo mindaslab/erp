@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :companies do
     resources :books do
       resources :finance_records do
-        resources :docs
+        resources :docs do
+          member do
+            get 'download'
+          end
+        end
       end
     end
 

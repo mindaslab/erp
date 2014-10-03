@@ -4,12 +4,7 @@ class DocsController < ApplicationController
   before_action :check_user_is_collaborator
   before_action :set_book
   before_action :set_record
-  before_action :set_doc, only: [:update, :destroy]
-
-  # GET /docs/new
-  def new
-    @doc = Doc.new
-  end
+  before_action :set_doc, only: [:update, :destroy, :download]
 
 
   # POST /docs
@@ -39,10 +34,14 @@ class DocsController < ApplicationController
     end
   end
 
+  def download
+    send_file File.open(@doc.file.path), filename: @doc.file_file_name
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_doc
-      @doc = Doc.find(params[:id])
+      @doc = @record.docs.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
