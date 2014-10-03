@@ -1,7 +1,7 @@
 %tr{class: record_color(record)}
   %td= "##{record.sno}"
   %td= record.time.to_s(:short)
-  %td= record.description
+  %td= link_to record.description, company_book_record_path(record.book.company, record.book, record)
   %td= record.amount
   %td= record.status.gsub(/_/, ' ').capitalize
   %td

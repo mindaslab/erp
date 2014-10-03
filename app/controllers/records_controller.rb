@@ -54,7 +54,7 @@ class RecordsController < ApplicationController
   def update
     respond_to do |format|
       if @record.update(record_params)
-        format.html { redirect_to company_book_records_path(@company, @book), notice: 'Record was successfully updated.' }
+        format.html { redirect_to company_book_record_path(@company, @book, @record), notice: 'Record was successfully updated.' }
         format.json { render :show, status: :ok, location: @record }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class RecordsController < ApplicationController
   def destroy
     @record.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: "Record deleted successfully." }
+      format.html { redirect_to company_book_records_path(@company, @book), notice: "Record deleted successfully." }
       format.json { head :no_content }
     end
   end
