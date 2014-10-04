@@ -3,6 +3,7 @@ class FinanceRecord < ActiveRecord::Base
     :capital, :draw, :loan_taken]
   belongs_to :book
   has_many :docs
+  has_many :notes
   before_create :assign_sno
 
   SearchableColumns = [:description]

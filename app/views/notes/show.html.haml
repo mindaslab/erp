@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Content:
+  = @note.content
+%p
+  %b Record:
+  = @note.record
+
+= link_to 'Edit', edit_note_path(@note)
+\|
+= link_to 'Back', notes_path

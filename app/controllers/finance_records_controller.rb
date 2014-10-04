@@ -23,6 +23,7 @@ class FinanceRecordsController < ApplicationController
   # GET /records/1.json
   def show
     @doc = Doc.new
+    @note = Note.new
   end
 
   # GET /records/new

@@ -29,6 +29,9 @@
 .row
   .col-md-8
     %h2 Notes
+    = render partial: "notes/form"
+    %hr
+    = render @record.notes
   .col-md-4
     %h2 Files
     = render partial: "docs/form"
