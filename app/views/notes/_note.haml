@@ -1,2 +1,7 @@
-%p= note.content
+%p
+  = note.content
+  %br
+  = link_to "Delete", company_book_finance_record_note_path(note.company,
+    note.book, note.finance_record, note), method: "Delete",
+    connfirm: "Are you sure yu want to delete?", class: "btn btn-xs btn-danger"
 %hr
