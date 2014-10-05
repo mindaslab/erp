@@ -18,5 +18,7 @@
     .container-fluid
       .row
         .col-md-6.col-md-offset-3= render partial: "common/alerts"
-      = yield
+      .row
+        .col-md-6.compass-image= image_tag "compass_black.png", width: 235, height: 250
+        = yield
       = render partial: "common/footer"
