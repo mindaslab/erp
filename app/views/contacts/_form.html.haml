@@ -1,4 +1,4 @@
-= form_for(@contact, html:{class: "form-horizontal"}) do |f|
+= form_for([@company, @contact], html:{class: "form-horizontal"}) do |f|
   - if @contact.errors.any?
     #error_explanation
       %h2= "#{pluralize(@contact.errors.count, "error")} prohibited this contact from being saved:"
@@ -37,7 +37,7 @@
   .field.form-group
     = f.label :country, class: "col-sm-2 control-label"
     .col-sm-6
-      = f.country_select :country, class: "form-control"
+      = f.country_select :country
   .field.form-group
     = f.label :business, class: "col-sm-2 control-label"
     .col-sm-6
@@ -57,4 +57,5 @@
   .actions.col-sm-offset-2.col-sm-6
     = hidden_field_tag "contact[company_id]", 1
     .col-sm-6
-      = f.submit 'Save', class: "btn btn-default"
+      = f.submit 'Save', class: "btn btn-primary"
+      = link_to 'Cancel', :back, class: "btn btn-danger"

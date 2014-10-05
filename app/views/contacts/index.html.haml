@@ -1,5 +1,7 @@
 %h1 Listing contacts
 
+= link_to 'New Contact', new_company_contact_path(@company)
+
 %table
   %tr
     %th Company
@@ -35,7 +37,3 @@
       %td= link_to 'Show', contact
       %td= link_to 'Edit', edit_contact_path(contact)
       %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Contact', new_contact_path

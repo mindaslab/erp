@@ -1,5 +1,7 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_company
+  before_action :check_user_is_collaborator
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   # GET /contacts
@@ -26,10 +28,10 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
-
+    @contact.company = @company
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to company_contact_path(@company, @contact), notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -57,7 +59,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url }
+      format.html { redirect_to company_contacts_url }
       format.json { head :no_content }
     end
   end
@@ -65,11 +67,13 @@ class ContactsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
-      @contact = Contact.find(params[:id])
+      @contact = @company.contact.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
       params.require(:contact).permit(:company_id, :name, :ph, :email, :address, :city, :zip, :country, :business, :customer, :supplier, :employee)
     end
+
+    include UserPermissionCheck
 end
