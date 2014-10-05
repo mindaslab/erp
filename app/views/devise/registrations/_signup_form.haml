@@ -1,0 +1,16 @@
+%h2 Create New Account
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  %div.form-group
+    = f.label :email
+    %br
+    = f.email_field :email, :autofocus => true
+  %div.form-group
+    = f.label :password
+    %br
+    = f.password_field :password
+  %div.form-group
+    = f.label :password_confirmation
+    %br
+    = f.password_field :password_confirmation
+  %div= f.submit "Sign up", class: "btn btn-primary"
