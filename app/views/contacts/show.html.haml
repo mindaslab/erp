@@ -37,6 +37,6 @@
   %b Employee:
   = @contact.employee
 
-= link_to 'Edit', edit_contact_path(@contact)
+= link_to 'Edit', edit_company_contact_path(@company, @contact)
 \|
-= link_to 'Back', contacts_path
+= link_to 'Back', company_contacts_path(@company)
