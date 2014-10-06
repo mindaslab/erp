@@ -29,7 +29,7 @@ class DocsController < ApplicationController
   def destroy
     @doc.destroy
     respond_to do |format|
-      format.html { redirect_to docs_url }
+      format.html { redirect_to :back, notice: "Document deleted." }
       format.json { head :no_content }
     end
   end

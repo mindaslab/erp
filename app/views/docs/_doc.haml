@@ -1,2 +1,5 @@
-%li= link_to doc.file_file_name,
-  download_company_book_finance_record_doc_path(doc.company, doc.book, doc.finance_record, doc)
+%li
+  = link_to doc.file_file_name,
+    download_company_book_finance_record_doc_path(doc.company, doc.book, doc.finance_record, doc)
+  = link_to "Delete", company_book_finance_record_doc_path(doc.company, doc.book, doc.finance_record, doc),
+    method: :delete

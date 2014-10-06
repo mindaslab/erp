@@ -2,38 +2,4 @@
 
 = link_to 'New Contact', new_company_contact_path(@company)
 
-%table
-  %tr
-    %th Company
-    %th Name
-    %th Ph
-    %th Email
-    %th Address
-    %th City
-    %th Zip
-    %th Country
-    %th Business
-    %th Customer
-    %th Supplier
-    %th Employee
-    %th
-    %th
-    %th
-
-  - @contacts.each do |contact|
-    %tr
-      %td= contact.company
-      %td= contact.name
-      %td= contact.ph
-      %td= contact.email
-      %td= contact.address
-      %td= contact.city
-      %td= contact.zip
-      %td= contact.country
-      %td= contact.business
-      %td= contact.customer
-      %td= contact.supplier
-      %td= contact.employee
-      %td= link_to 'Show', contact
-      %td= link_to 'Edit', edit_contact_path(contact)
-      %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
+= render @contacts
