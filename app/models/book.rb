@@ -2,8 +2,8 @@ class Book < ActiveRecord::Base
   belongs_to :company
   has_many :finance_records, dependent: :destroy
   validates :name, presence: true
-  SearchableColumns = [:name, :description]
 
+  SearchableColumns = [:name, :description]
   include Searchable
 
   def revenue
