@@ -1,1 +1,8 @@
-%h1= contact.name
+.col-md-3
+  %p
+    %b= link_to contact.name, [@company, contact]
+  %p= contact.email
+  %p= contact.ph
+  %p
+    = contact.city
+    = contact.zip
