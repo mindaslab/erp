@@ -1,0 +1,10 @@
+.panel
+  .panel-body
+    = link_to raw('<span class="glyphicon glyphicon-home"></span>'), root_path,
+      class: "btn btn-default"
+    = link_to raw('<span class="glyphicon glyphicon-user"></span> Signout'), destroy_user_session_path,
+      class: "btn btn-default", method: :delete
+    = link_to @company.name, company_books_path(@company), class: "btn btn-default"
+    = link_to 'New Contact', new_company_contact_path(@company), class: "btn btn-default"
+    .pull-right
+      = render partial: "common/search_form"
