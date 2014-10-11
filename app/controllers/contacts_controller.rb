@@ -8,6 +8,7 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @contacts = Contact.all
+    @contacts = @contacts.search(params[:s]) unless params[:s].empty? if params[:s]
   end
 
   # GET /contacts/1
