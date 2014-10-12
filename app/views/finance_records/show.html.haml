@@ -9,7 +9,7 @@
   \#
   = @record.sno
 .row
-  .col-md-12
+  .col-md-8
     %p
       %b Amount:
       = @record.amount
@@ -19,6 +19,10 @@
     %p
       %b Status:
       = @record.status
+  .col-md-4#contact-search
+    = text_field_tag :s, nil, id: "contact-content", placeholder: "Search Contact"
+    = hidden_field_tag "contact-search-path", "/companies/#{@company.id}/contacts/search"
+    #contact-search-result
 .row
   .col-md-12
     = link_to "Edit", edit_company_book_finance_record_path(@company, @book, @record),
