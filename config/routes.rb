@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     end
 
     resources :collabs
-    resources :contacts
+    resources :contacts do
+      collection do
+        get "search"
+      end
+    end
 
     member do
       get "friends"
