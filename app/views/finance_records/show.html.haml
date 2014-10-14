@@ -20,8 +20,10 @@
       %b Status:
       = @record.status
   .col-md-4#contact-search
-    = text_field_tag :s, nil, id: "contact-content", placeholder: "Search Contact"
+    = text_field_tag :s, nil, id: "contact-content", placeholder: "Search Contact",
+    autocomplete: "off"
     = hidden_field_tag "contact-search-path", "/companies/#{@company.id}/contacts/search"
+    = hidden_field_tag "record-id", @record.id
     #contact-search-result
 .row
   .col-md-12

@@ -3,7 +3,8 @@ class FinanceRecordsController < ApplicationController
   before_action :set_company
   before_action :check_user_is_collaborator
   before_action :set_book
-  before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_action :set_record, only: [:show, :edit, :update, :destroy,
+  :add_contact, :remove_coontact]
 
   # GET /records
   # GET /records.json
@@ -73,6 +74,20 @@ class FinanceRecordsController < ApplicationController
       format.html { redirect_to company_book_finance_records_path(@company, @book), notice: "Record deleted successfully." }
       format.json { head :no_content }
     end
+  end
+
+  def add_contact
+    @contact = @company.contacts.find_by(id: params[:contact_id])
+    if @contact
+      @record.contact = @contact
+      @record.save
+      redirect_to :back, notice: "Contact added to record"
+    else
+      redirect_to :back, notice: "Contact not found"
+    end
+  end
+
+  def remove_contact
   end
 
   private
