@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :companies do
     resources :books do
       resources :finance_records do
+        member do
+          put "add_contact"
+          delete "remove_contact" 
+        end
         resources :notes
         resources :docs do
           member do

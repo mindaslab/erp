@@ -4,7 +4,7 @@ class FinanceRecordsController < ApplicationController
   before_action :check_user_is_collaborator
   before_action :set_book
   before_action :set_record, only: [:show, :edit, :update, :destroy,
-  :add_contact, :remove_coontact]
+  :add_contact, :remove_contact]
 
   # GET /records
   # GET /records.json
@@ -81,13 +81,21 @@ class FinanceRecordsController < ApplicationController
     if @contact
       @record.contact = @contact
       @record.save
-      redirect_to :back, notice: "Contact added to record"
+      redirect_to :back, notice: "Contact added to record."
     else
-      redirect_to :back, notice: "Contact not found"
+      redirect_to :back, notice: "Contact not found."
     end
   end
 
   def remove_contact
+    @contact = @company.contacts.find_by(id: params[:contact_id])
+    if @contact
+      @record.contact = nil
+      @record.save
+      redirect_to :back, notice: "Contact removed from record."
+    else
+      redirect_to :back, notice: "Contact not found."
+    end
   end
 
   private

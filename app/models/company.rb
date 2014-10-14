@@ -1,7 +1,7 @@
 class Company < ActiveRecord::Base
   validates :name, presence: true
   has_many :books
-  has_many :records, through: :books
+  has_many :finance_records, through: :books
   has_many :contacts
   belongs_to :user
   has_and_belongs_to_many :collaborators, class_name: "User"

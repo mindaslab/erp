@@ -1,0 +1,8 @@
+= link_to @record.contact.name, [@company, @record.contact]
+%br
+= @record.contact.email
+%br
+= @record.contact.ph
+%br
+.remove-link= link_to "Remove", remove_contact_company_book_finance_record_path(@company,
+  @book, @record, contact_id: @record.contact.id), method: :delete

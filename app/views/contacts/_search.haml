@@ -4,3 +4,6 @@
   = search.email
   %br
   = search.ph
+  %br
+  = link_to "Add", add_contact_company_book_finance_record_path(@company, @record.book,
+  @record, contact_id: search.id), method: :put

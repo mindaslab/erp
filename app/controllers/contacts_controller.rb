@@ -67,6 +67,7 @@ class ContactsController < ApplicationController
 
   def search
     @contacts = @company.contacts.search(params[:s]).limit(5)
+    @record = @company.finance_records.find(params[:record_id])
     render layout: false
   end
 
