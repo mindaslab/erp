@@ -18,6 +18,10 @@ class FinanceRecordsController < ApplicationController
     @income = revenue - expense
     @balance = @income + @records.capital.sum(:amount) - @records.draw.sum(:amount) +
     @records.loan_taken.sum(:amount)
+    respond_to do |format|
+      format.html{}
+      format.csv{ render text: @records.to_csv }
+    end
   end
 
   # GET /records/1
