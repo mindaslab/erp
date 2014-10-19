@@ -2,8 +2,15 @@
   .panel-body
     = link_to raw('<span class="glyphicon glyphicon-home"></span>'), root_path,
       class: "btn btn-default"
-    = link_to raw('<span class="glyphicon glyphicon-user"></span> Signout'), destroy_user_session_path,
-      class: "btn btn-default", method: :delete
     = link_to 'New Company', new_company_path, class: "btn btn-default"
+    .btn-group
+      %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+        %span.glyphicon.glyphicon-cog
+        %span.caret
+      %ul.dropdown-menu{:role => "menu"}
+        %li.divider
+        %li
+          = link_to raw('<span class="glyphicon glyphicon-user"></span> Signout'), destroy_user_session_path,
+            method: :delete
     .pull-right
       = render partial: "common/search_form"
