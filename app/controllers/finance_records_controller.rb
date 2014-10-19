@@ -20,7 +20,8 @@ class FinanceRecordsController < ApplicationController
     @records.loan_taken.sum(:amount)
     respond_to do |format|
       format.html{}
-      format.csv{ render text: @records.order(:sno).to_csv }
+      format.csv { send_data @records.order(:sno).to_csv }
+      format.xls { send_data @records.order(:sno).to_csv(col_sep: "\t") }
     end
   end
 

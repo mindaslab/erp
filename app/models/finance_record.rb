@@ -26,7 +26,7 @@ class FinanceRecord < ActiveRecord::Base
   end
 
   def transaction
-    self.status
+    self.status.gsub(/_/, " ").capitalize
   end
 
   private
