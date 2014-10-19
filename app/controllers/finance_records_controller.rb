@@ -19,9 +19,9 @@ class FinanceRecordsController < ApplicationController
     @balance = @income + @records.capital.sum(:amount) - @records.draw.sum(:amount) +
     @records.loan_taken.sum(:amount)
     respond_to do |format|
-      format.html{}
-      format.csv { send_data @records.order(:sno).to_csv }
-      format.xls { send_data @records.order(:sno).to_csv(col_sep: "\t") }
+      format.html {}
+      format.csv  { send_data @records.order(:sno).to_csv }
+      format.xls  {}
     end
   end
 
