@@ -9,10 +9,10 @@ class FinanceRecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    @records = @book.finance_records.order("time desc")
+    @records = @book.finance_records
     @records = @records.search(params[:s]) unless params[:s].empty? if params[:s]
     @records = @records.send(params[:t]) if FinanceRecord.statuses.keys.index(params[:t])
-    @records_page = @records.page(params[:page]).per(50) # paginated records
+    @records_page = @records.order("time desc").page(params[:page]).per(50) # paginated records
     revenue = @records.revenue.sum(:amount)
     expense = @records.expense.sum(:amount)
     @income = revenue - expense
@@ -20,7 +20,7 @@ class FinanceRecordsController < ApplicationController
     @records.loan_taken.sum(:amount)
     respond_to do |format|
       format.html{}
-      format.csv{ render text: @records.to_csv }
+      format.csv{ render text: @records.order(:sno).to_csv }
     end
   end
 

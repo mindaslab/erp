@@ -1,6 +1,8 @@
 class FinanceRecord < ActiveRecord::Base
   enum status: [:revenue, :expense, :pending_revenue, :pending_expense,
     :capital, :draw, :loan_taken]
+
+  CSV_COLUMNS = %w(sno time transaction description amount)
   belongs_to :book
   belongs_to :contact
   has_many :docs
@@ -12,11 +14,19 @@ class FinanceRecord < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |product|
-        csv << product.attributes.values_at(*column_names)
+      csv << FinanceRecord::CSV_COLUMNS.collect{|column_name| column_name.capitalize}
+      all.each do |record|
+        row = []
+        for column in FinanceRecord::CSV_COLUMNS
+          row << record.send(column)
+        end
+        csv << row
       end
     end
+  end
+
+  def transaction
+    self.status
   end
 
   private
