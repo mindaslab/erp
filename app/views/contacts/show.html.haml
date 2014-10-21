@@ -4,7 +4,7 @@
 
 %p
   %b Company:
-  = @contact.company
+  = @contact.company.name
 %p
   %b Name:
   = @contact.name
@@ -39,6 +39,6 @@
   %b Employee:
   = @contact.employee
 
-= link_to 'Edit', edit_company_contact_path(@company, @contact)
-\|
-= link_to 'Back', company_contacts_path(@company)
+= link_to 'Edit', edit_company_contact_path(@company, @contact), class: "btn btn-warning"
+= link_to "Delete", [@company, @contact], class: "btn btn-danger", method: :delete,
+  confirm: "Really want to delete contact"

@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = @company.contacts.order(:name).page(params[:page]).per(20)
     @contacts = @contacts.search(params[:s]) unless params[:s].empty? if params[:s]
   end
 

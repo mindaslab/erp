@@ -1,3 +1,6 @@
 = render partial: 'top_bar'
 
 .row= render @contacts
+
+.row
+  .col-md-12= paginate @contacts, :theme => 'twitter-bootstrap-3'

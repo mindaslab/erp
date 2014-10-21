@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
   belongs_to :company
-  has_many :finance_records
+  has_many :finance_records, dependent: :destroy
   validates :name, presence: true
 
   SearchableColumns = [:name, :ph, :email, :address,
