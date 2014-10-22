@@ -2,43 +2,57 @@
 
 %p#notice= notice
 
+%h1= @contact.name
+%hr
+
+.row
+  .col-md-6
+    %p
+      %b Ph:
+      = @contact.ph
+      \|
+      %b Email:
+      =mail_to @contact.email
+    %p
+      %b Address:
+      %br
+      = @contact.address
+      \,
+      = @contact.city
+      \-
+      = @contact.zip
+      (
+      = @contact.country
+      )
+  .col-md-6
+
+
 %p
-  %b Company:
-  = @contact.company.name
-%p
-  %b Name:
-  = @contact.name
-%p
-  %b Ph:
-  = @contact.ph
-%p
-  %b Email:
-  = @contact.email
-%p
-  %b Address:
-  = @contact.address
-%p
-  %b City:
-  = @contact.city
-%p
-  %b Zip:
-  = @contact.zip
-%p
-  %b Country:
-  = @contact.country
-%p
-  %b Business:
-  = @contact.business
-%p
-  %b Customer:
-  = @contact.customer
-%p
-  %b Supplier:
-  = @contact.supplier
-%p
-  %b Employee:
-  = @contact.employee
+  %b Roles
+  %ul
+    - if @contact.business
+      %li Business
+    - if @contact.customer
+      %li Customer
+    - if @contact.supplier
+      %li Supplier
+    - if @contact.employee
+      %li Employee
 
 = link_to 'Edit', edit_company_contact_path(@company, @contact), class: "btn btn-warning"
 = link_to "Delete", [@company, @contact], class: "btn btn-danger", method: :delete,
   confirm: "Really want to delete contact"
+
+%h2 Records
+
+%table.table
+  %tr
+    %th Sno
+    %th Time
+    %th{width: "40%"} Description
+    %th Amount
+    %th State
+    %th Actions
+  = render @records
+
+= paginate @records, :theme => 'twitter-bootstrap-3'
