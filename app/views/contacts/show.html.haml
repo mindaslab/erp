@@ -24,20 +24,28 @@
       (
       = @contact.country
       )
+    %p
+      %b Roles
+      %ul
+        - if @contact.business
+          %li Business
+        - if @contact.customer
+          %li Customer
+        - if @contact.supplier
+          %li Supplier
+        - if @contact.employee
+          %li Employee
   .col-md-6
+    %b
+      %u In brief
+    - if @records
+      %ul
+        - FinanceRecord.statuses.each do |key, _|
+          %li
+            = key.gsub(/_/, " ").capitalize
+            \:
+            = @records.send(key).sum(:amount)
 
-
-%p
-  %b Roles
-  %ul
-    - if @contact.business
-      %li Business
-    - if @contact.customer
-      %li Customer
-    - if @contact.supplier
-      %li Supplier
-    - if @contact.employee
-      %li Employee
 
 = link_to 'Edit', edit_company_contact_path(@company, @contact), class: "btn btn-warning"
 = link_to "Delete", [@company, @contact], class: "btn btn-danger", method: :delete,
@@ -45,14 +53,19 @@
 
 %h2 Records
 
-%table.table
-  %tr
-    %th Sno
-    %th Time
-    %th{width: "40%"} Description
-    %th Amount
-    %th State
-    %th Actions
-  = render @records
+= form_tag(company_contact_path(@company, @contact), method: :get) do
+  = select_tag :book_id, options_from_collection_for_select(@contact.books.order(:name), :id, :name)
+  = submit_tag "Get Records"
 
-= paginate @records, :theme => 'twitter-bootstrap-3'
+- if @records
+  %table.table
+    %tr
+      %th Sno
+      %th Time
+      %th{width: "40%"} Description
+      %th Amount
+      %th State
+      %th Actions
+    = render @records
+
+  = paginate @records, :theme => 'twitter-bootstrap-3'
