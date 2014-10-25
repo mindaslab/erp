@@ -44,7 +44,8 @@
           %li
             = key.gsub(/_/, " ").capitalize
             \:
-            = @records.send(key).sum(:amount)
+            = link_to @records.send(key).sum(:amount),  company_contact_path(@company, @contact,
+              book_id: @book.id, t: key.to_s)
 
 
 = link_to 'Edit', edit_company_contact_path(@company, @contact), class: "btn btn-warning"
@@ -54,7 +55,7 @@
 %h2 Records
 
 = form_tag(company_contact_path(@company, @contact), method: :get) do
-  = select_tag :book_id, options_from_collection_for_select(@contact.books.order(:name), :id, :name)
+  = select_tag :book_id, options_from_collection_for_select(@contact.books.order(:name).distinct, :id, :name, params[:book_id])
   = submit_tag "Get Records"
 
 - if @records

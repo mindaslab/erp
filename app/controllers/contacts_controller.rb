@@ -15,7 +15,10 @@ class ContactsController < ApplicationController
   # GET /contacts/1.json
   def show
     @book = @company.books.find_by(id: params[:book_id])
-    @records = @contact.finance_records.where(book: @book).order(:time).page(params[:page]).per(20) if @book
+    if @book
+      @records = @contact.finance_records.where(book: @book).order(:time).page(params[:page]).per(20)
+      @records = @records.send(params[:t]) if FinanceRecord.statuses.keys.index(params[:t])
+    end
   end
 
   # GET /contacts/new
