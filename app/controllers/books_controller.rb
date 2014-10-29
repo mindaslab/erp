@@ -65,12 +65,12 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url }
+      format.html { redirect_to company_books_path(@company) }
       format.json { head :no_content }
     end
   end
 
-  private    
+  private
     # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = @company.books.where(id: params[:id]).first
