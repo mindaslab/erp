@@ -2,7 +2,7 @@
   = render partial: 'top_bar'
   .panel-footer
     %ul.tranx-brief
-      - FinanceRecord.statuses.keys.each do |key| 
+      - FinanceRecord.statuses.keys.each do |key|
         %li= money_link @records, @book, key, params[:s]
       %li= "Income: #{@book.currency} #{@income}"
       %li= "Balance: #{@book.currency} #{@balance}"
@@ -18,3 +18,5 @@
   = render @records_page
 
 = paginate @records_page, :theme => 'twitter-bootstrap-3'
+
+= render partial: "advanced_search"

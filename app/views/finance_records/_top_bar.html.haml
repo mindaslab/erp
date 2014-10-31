@@ -10,6 +10,11 @@
       %span.caret
     %ul.dropdown-menu{:role => "menu"}
       %li
+        %a{"data-target" => "#advanced-search", "data-toggle" => "modal",
+          class: "advanced-search-link" }
+          Advanced Search
+      %li.divider
+      %li
         = link_to "Download as CSV", company_book_finance_records_path(@company, @book, format: "csv",
         t: params[:t], s: params[:s])
       %li
