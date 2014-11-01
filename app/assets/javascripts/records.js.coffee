@@ -8,3 +8,5 @@ $(document).on "ready, page:change", ->
     url = $("#contact-search-path").val()
     record_id = $("#record-id").val()
     $("#contact-search-result").load(url+"?s="+content+"&record_id="+record_id)
+
+  $('.datepicker').datepicker()
