@@ -17,7 +17,7 @@ class DocsController < ApplicationController
         format.html { redirect_to :back, notice: 'File was successfully added.' }
         format.json { render :show, status: :created, location: @doc }
       else
-        format.html { render :new }
+        format.html { redirect_to :back, notice: 'File not accepted.' }
         format.json { render json: @doc.errors, status: :unprocessable_entity }
       end
     end
