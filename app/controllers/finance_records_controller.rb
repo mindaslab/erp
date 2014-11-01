@@ -12,6 +12,8 @@ class FinanceRecordsController < ApplicationController
     @records = @book.finance_records
     @records = @records.search(params[:s]) unless params[:s].empty? if params[:s]
     @records = @records.send(params[:t]) if FinanceRecord.statuses.keys.index(params[:t])
+    @records = @records.where("time >= ?", date_to_db_string(params[:st], "beginning")) unless params[:st].empty?
+    @records = @records.where("time <= ?", date_to_db_string(params[:et], "end")) unless params[:et].empty?
     @records_page = @records.order("time desc").page(params[:page]).per(50) # paginated records
     revenue = @records.revenue.sum(:amount)
     expense = @records.expense.sum(:amount)

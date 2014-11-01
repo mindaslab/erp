@@ -7,11 +7,12 @@
           %span.sr-only Close
         %h4#myModalLabel.modal-title Advanced Search
       .modal-body
-        = form_tag("#") do
+        = form_tag({action: :index}, method: :get) do
           = search_field_tag :s, params[:s], placeholder: "Search what?"
-          = select_tag :t, options_for_select(record_status_options)
+          = select_tag :t, options_for_select(record_status_options, selected: params[:t]),
+            prompt: "All Records"
           = datetime_field_tag :st, params[:st]
-          = datetime_field_tag :et, params[:st]
+          = datetime_field_tag :et, params[:et]
           = submit_tag "Search"
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
