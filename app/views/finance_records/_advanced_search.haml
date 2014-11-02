@@ -7,13 +7,24 @@
           %span.sr-only Close
         %h4#myModalLabel.modal-title Advanced Search
       .modal-body
-        = form_tag({action: :index}, method: :get) do
-          = search_field_tag :s, params[:s], placeholder: "Search what?"
-          = select_tag :t, options_for_select(record_status_options, selected: params[:t]),
+        = form_tag({action: :index}, method: :get, class: "form-horizontal") do
+          .form-group
+            .col-sm-4.control-label
+              %label Search Text
+            .col-sm-8= search_field_tag :s, params[:s], placeholder: "Search what?"
+          .form-group
+            .col-sm-4.control-label
+              %label Record Type
+            .col-sm-8= select_tag :t, options_for_select(record_status_options, selected: params[:t]),
             prompt: "All Records"
-          = datetime_field_tag :st, params[:st], placeholder: "yyyy-mm-dd"
-          = datetime_field_tag :et, params[:et], placeholder: "yyyy-mm-dd"
-          = submit_tag "Search"
+          .form-group
+            .col-sm-4.control-label
+              %label Start Date
+            .col-sm-8= datetime_field_tag :st, params[:st], placeholder: "yyyy-mm-dd"
+          .form-group
+            .col-sm-4.control-label
+              %label End Date
+            .col-sm-8= datetime_field_tag :et, params[:et], placeholder: "yyyy-mm-dd"
+          .col-sm-8.col-sm-offset-4= submit_tag "Search", class: "btn btn-primary"
       .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-        %button.btn.btn-primary{:type => "button"} Save changes
+        Compass ERP
