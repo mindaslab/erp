@@ -8,6 +8,7 @@
         %h4#myModalLabel.modal-title Advanced Search
       .modal-body
         = form_tag({action: :index}, method: :get, class: "form-horizontal") do
+          = hidden_field_tag :contact_id
           .form-group
             .col-sm-4.control-label
               %label Search Text
@@ -25,6 +26,17 @@
             .col-sm-4.control-label
               %label End Date
             .col-sm-8= datetime_field_tag :et, params[:et], placeholder: "yyyy-mm-dd"
+          .form-group
+            .col-sm-4.control-label
+            .col-sm-8
+              #contact-content-for-filter
+                .contact-content
+                %span#remove-contact.btn.btn-danger Remove Contact
           .col-sm-8.col-sm-offset-4= submit_tag "Search", class: "btn btn-primary"
+        %hr
+        #contact-search
+          = text_field_tag :contact_name, nil, placeholder: "Search Contact"
+          #contact-search-display
+
       .modal-footer
         Compass ERP

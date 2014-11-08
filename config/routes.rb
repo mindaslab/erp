@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :finance_records do
         member do
           put "add_contact"
-          delete "remove_contact" 
+          delete "remove_contact"
         end
         resources :notes
         resources :docs do
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :contacts do
       collection do
         get "search"
+        get "record_filter_search"
       end
     end
 

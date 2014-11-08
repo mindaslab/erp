@@ -9,7 +9,11 @@ class FinanceRecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    @records = @book.finance_records
+    if params[:contact_id].present?
+      @records = @book.finance_records.where(contact: @company.contacts.find(params[:contact_id]))
+    else
+      @records = @book.finance_records
+    end
     @records = @records.search(params[:s]) unless params[:s].empty? if params[:s]
     @records = @records.send(params[:t]) if FinanceRecord.statuses.keys.index(params[:t])
     @records = @records.where("time >= ?", date_to_db_string(params[:st], "beginning")) if params[:st].present?
