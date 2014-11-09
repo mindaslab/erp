@@ -8,7 +8,7 @@
         %h4#myModalLabel.modal-title Advanced Search
       .modal-body
         = form_tag({action: :index}, method: :get, class: "form-horizontal") do
-          = hidden_field_tag :contact_id
+          = hidden_field_tag :contact_id, params[:contact_id]
           .form-group
             .col-sm-4.control-label
               %label Search Text
@@ -31,7 +31,14 @@
             .col-sm-8
               #contact-content-for-filter
                 .contact-content
-                %span#remove-contact.btn.btn-danger Remove Contact
+                  - if @contact
+                    = @contact.name
+                    %br
+                    = @contact.ph
+                    %br
+                    = @contact.email
+                    %br
+                  %span#remove-contact.btn.btn-danger Remove Contact
           .col-sm-8.col-sm-offset-4= submit_tag "Search", class: "btn btn-primary"
         %hr
         #contact-search

@@ -4,9 +4,15 @@
 
 $(document).on "ready, page:change", ->
   company_id =  $("#company_id").val()
-  $("#contact-content-for-filter").hide()
+  contact_id = $("#contact_id").val()
+  if (contact_id > 0)
+    $("#contact-search").hide()
+    $("#contact-content-for-filter").show()
+  else
+    $("#contact-content-for-filter").hide()
+    $("#contact-search").show()
+
   $("#contact-content").keyup ->
-    alert "jaaa"
     content = $("#contact-content").val()
     url = $("#contact-search-path").val()
     record_id = $("#record-id").val()
@@ -27,4 +33,4 @@ $(document).on "ready, page:change", ->
   $("#remove-contact").click ->
     $("#contact-search").show()
     $("#contact-content-for-filter").hide()
-    $("#contact_id").val()
+    $("#contact_id").val("")

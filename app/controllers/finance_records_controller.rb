@@ -10,7 +10,8 @@ class FinanceRecordsController < ApplicationController
   # GET /records.json
   def index
     if params[:contact_id].present?
-      @records = @book.finance_records.where(contact: @company.contacts.find(params[:contact_id]))
+      @contact = @company.contacts.find(params[:contact_id])
+      @records = @book.finance_records.where(contact: @contact)
     else
       @records = @book.finance_records
     end
