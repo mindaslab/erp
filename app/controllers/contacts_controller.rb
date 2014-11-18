@@ -77,7 +77,7 @@ class ContactsController < ApplicationController
   end
 
   def record_filter_search
-    @contacts = @company.contacts.search(params[:s]).limit(5)
+    @contacts = @company.contacts.search(params[:s]).order(:name).limit(5)
     render layout: false
   end
 

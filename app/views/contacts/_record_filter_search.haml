@@ -1,10 +1,12 @@
 .ohgod
   .contact-content
     = record_filter_search.name
-    %br
-    = record_filter_search.ph
-    %br
-    = record_filter_search.email
+    - if record_filter_search.ph.present?
+      %br
+      = record_filter_search.ph
+    - if record_filter_search.email.present?
+      %br
+      = record_filter_search.email
     %br
   %button.add-contact-record-filter.btn.btn-primary{"data-contact-id" => record_filter_search.id}
     Add
