@@ -1,6 +1,6 @@
 .col-md-3
   %p
-    %b= link_to contact.name, [@company, contact]
+    %b= link_to "##{contact.sno} #{contact.name}", [@company, contact]
   %p= contact.email
   %p= contact.ph
   %p
