@@ -8,22 +8,28 @@
 .row
   .col-md-6
     %p
-      %b Ph:
-      = @contact.ph
-      \|
-      %b Email:
-      =mail_to @contact.email
+      - if @contact.ph.present?
+        %b Ph:
+        = @contact.ph
+        \|
+      - if @contact.email.present?
+        %b Email:
+        =mail_to @contact.email
     %p
       %b Address:
       %br
-      = @contact.address
-      \,
-      = @contact.city
-      \-
-      = @contact.zip
-      (
-      = @contact.country
-      )
+      - if @contact.address.present?
+        = @contact.address
+        \,
+      - if @contact.city.present?
+        = @contact.city
+        \-
+      - if @contact.zip.present?
+        = @contact.zip
+      - if @contact.country.present?
+        (
+        = @contact.country
+        )
     %p
       %b Roles
       %ul
