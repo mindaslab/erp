@@ -13,13 +13,14 @@
         %a{"data-target" => "#advanced-search", "data-toggle" => "modal",
           class: "advanced-search-link" }
           Advanced Search
-      %li.divider
-      %li
-        = link_to "Download as CSV", company_book_finance_records_path(@company, @book, format: "csv",
-        t: params[:t], s: params[:s], st: params[:st], et: params[:et], contact_id: params[:contact_id])
-      %li
-        = link_to "Download as Excel", company_book_finance_records_path(@company, @book, format: "xls",
-        t: params[:t], s: params[:s], st: params[:st], et: params[:et], contact_id: params[:contact_id])
+      - if params[:action] == "index"
+        %li.divider
+          %li
+            = link_to "Download as CSV", company_book_finance_records_path(@company, @book, format: "csv",
+            t: params[:t], s: params[:s], st: params[:st], et: params[:et], contact_id: params[:contact_id])
+          %li
+            = link_to "Download as Excel", company_book_finance_records_path(@company, @book, format: "xls",
+            t: params[:t], s: params[:s], st: params[:st], et: params[:et], contact_id: params[:contact_id])
       %li.divider
       %li
         = link_to raw('<span class="glyphicon glyphicon-user"></span> Signout'), destroy_user_session_path,
