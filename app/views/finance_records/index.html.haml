@@ -7,6 +7,8 @@
       %li= "Income: #{@book.currency} #{@income}"
       %li= "Balance: #{@book.currency} #{@balance}"
 
+.contact= render partial: "contact" if @contact
+
 %table.table
   %tr
     %th Sno

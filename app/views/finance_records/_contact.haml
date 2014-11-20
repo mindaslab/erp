@@ -1,0 +1,4 @@
+%h2 Contact
+%p= link_to "# #{@contact.sno} #{@contact.name}", [@company, @contact]
+%p= mail_to @contact.email
+%p= @contact.ph
