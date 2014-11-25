@@ -79,3 +79,9 @@ gem 'bootstrap-kaminari-views'
 
 # Use paperclip
 gem "paperclip", "~> 4.2"
+
+# Use rails_admin
+gem "rails_admin"
+
+# Use email_validation
+gem 'email_validation'
