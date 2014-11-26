@@ -1,7 +1,8 @@
 class CollabsController < ApplicationController
   before_action :set_company
   before_action :set_collab, only: [:show, :edit, :update, :destroy]
-  
+  before_action :check_user_is_permitted
+
   # GET /collabs
   # GET /collabs.json
   def index
@@ -67,7 +68,7 @@ class CollabsController < ApplicationController
     def set_collab
       @collab = Collab.find(params[:id])
     end
-    
+
     def set_company
       @company = current_user.companies.find params[:company_id]
     end
@@ -76,4 +77,6 @@ class CollabsController < ApplicationController
     def collab_params
       params.require(:collab).permit(:email, :company_id)
     end
+
+    
 end

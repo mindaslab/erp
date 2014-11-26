@@ -75,6 +75,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    email_validation (1.2.0)
+      localized_each_validator (>= 1.0.1)
     erubis (2.7.0)
     execjs (2.0.2)
     font-awesome-rails (4.1.0.0)
@@ -108,6 +110,9 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.5.0)
     libv8 (3.16.14.3)
+    localized_each_validator (1.0.3)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
@@ -234,6 +239,7 @@ DEPENDENCIES
   country_select
   currency_select (~> 0.1.4)
   devise
+  email_validation
   font-awesome-sass
   haml-rails
   jbuilder (~> 2.0)

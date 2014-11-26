@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_company
+  before_action :check_user_is_permitted
   before_action :check_user_is_collaborator
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 

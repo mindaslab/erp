@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
   has_many :companies
   has_and_belongs_to_many :collab_companies, class_name: "Company"
-  
+
   def can_collaborate? book
     book.user == self
   end
@@ -18,5 +18,9 @@ class User < ActiveRecord::Base
   	company = self.companies.find_by_id company_id
     company ||= self.collab_companies.find_by_id company_id
     company
+  end
+
+  def permitted?
+    Permit.find_by(email: self.email)
   end
 end
