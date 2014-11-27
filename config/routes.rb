@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'static/not_permitted'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 

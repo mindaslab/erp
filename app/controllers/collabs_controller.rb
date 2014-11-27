@@ -1,7 +1,9 @@
 class CollabsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_user_is_permitted
   before_action :set_company
   before_action :set_collab, only: [:show, :edit, :update, :destroy]
-  before_action :check_user_is_permitted
+
 
   # GET /collabs
   # GET /collabs.json
@@ -78,5 +80,6 @@ class CollabsController < ApplicationController
       params.require(:collab).permit(:email, :company_id)
     end
 
-    
+    include UserPermissionCheck
+
 end

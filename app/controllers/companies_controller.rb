@@ -1,8 +1,8 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_user_is_permitted
   before_action :set_company_from_id, only: [:show, :edit, :update, :destroy, :friends,
     :add_friend, :remove_friend]
-  before_action :check_user_is_permitted
 
   # GET /companies
   # GET /companies.json

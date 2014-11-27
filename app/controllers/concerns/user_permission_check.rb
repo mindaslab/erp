@@ -14,7 +14,9 @@ module UserPermissionCheck
   ##
   # If user is not permitted rediects to root_path
   def check_user_is_permitted
-    redirect_to root_path, notice: "You are not permitted, contact admin" unless current_user.permitted?
+    unless current_user.permitted?
+      redirect_to static_not_permitted_path, notice: "You are not permitted, contact admin"
+    end
   end
 
   ##
