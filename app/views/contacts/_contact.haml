@@ -1,8 +1,11 @@
-.col-md-3
+.col-md-3.contact-tile
   %p
     %b= link_to "##{contact.sno} #{contact.name}", [@company, contact]
   %p= contact.email
   %p= contact.ph
   %p
     = contact.city
+    (
+    = contact.country
+    )
     = contact.zip

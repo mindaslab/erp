@@ -6,7 +6,7 @@
   %td= finance_record.amount
   %td= finance_record.status.gsub(/_/, ' ').capitalize
   %td
-    = link_to raw("<i class='glyphicon glyphicon-pencil'></i> #{finance_record.notes.count} &nbsp <i class='glyphicon glyphicon-download'></i> #{finance_record.docs.count}"),
+    = link_to raw("<i class='glyphicon glyphicon-pencil'></i> #{finance_record.notes.count} &nbsp <i class='glyphicon glyphicon-download'></i> #{finance_record.docs.count}")
       company_book_finance_record_path(finance_record.book.company, finance_record.book, finance_record),
       class: "btn btn-default btn-sm"
     = link_to "Edit", edit_company_book_finance_record_path(finance_record.book.company, finance_record.book, finance_record),
