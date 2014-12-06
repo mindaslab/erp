@@ -12,9 +12,8 @@
       = f.text_field :name, class: "form-control"
   .field.form-group
     = f.label :description, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-6.better-text-area
       = f.text_area :description, class: "form-control"
- 
+
   .actions.col-sm-offset-2.col-sm-6
     = f.submit 'Save', class: "btn btn-default"
-

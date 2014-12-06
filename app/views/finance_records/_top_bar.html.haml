@@ -1,7 +1,9 @@
 .panel-body
   = link_to raw('<span class="glyphicon glyphicon-home"></span>'), root_path,
     class: "btn btn-default"
-  = link_to @company.name, company_books_path(@company), class: "btn btn-default"
+  .btn-group
+    = link_to @company.name, company_books_path(@company), class: "btn btn-default"
+    = render partial: "common/jump_around"
   = link_to @book.name, company_book_finance_records_path(@company, @book), class: "btn btn-default"
   = link_to 'Add Record', new_company_book_finance_record_path(@company, @book), class: "btn btn-default"
   .btn-group

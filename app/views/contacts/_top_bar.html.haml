@@ -2,7 +2,9 @@
   .panel-body
     = link_to raw('<span class="glyphicon glyphicon-home"></span>'), root_path,
       class: "btn btn-default"
-    = link_to @company.name, company_contacts_path(@company), class: "btn btn-default"
+    .btn-group
+      = link_to @company.name, company_contacts_path(@company), class: "btn btn-default"
+      = render partial: "common/jump_around"
     = link_to 'New Contact', new_company_contact_path(@company), class: "btn btn-default"
     .btn-group
       %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
