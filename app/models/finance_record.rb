@@ -1,6 +1,6 @@
 class FinanceRecord < ActiveRecord::Base
   enum status: [:revenue, :expense, :pending_revenue, :pending_expense,
-    :capital, :draw, :loan_taken]
+    :capital, :draw, :loan_taken, :asset]
 
   CSV_COLUMNS = %w(sno time transaction description amount)
   belongs_to :book
