@@ -31,6 +31,16 @@ class FinanceRecord < ActiveRecord::Base
     self.status.gsub(/_/, " ").capitalize
   end
 
+  ##
+  # Returns all versions of this finance record
+  def history
+    finance_records = []
+    for version in self.versions
+      finance_records << self.version_at(version.created_at)
+    end
+    finance_records
+  end
+
   private
   def assign_sno
     self.sno = self.book.finance_records.maximum(:sno).to_i + 1
