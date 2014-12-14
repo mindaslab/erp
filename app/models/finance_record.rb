@@ -8,7 +8,7 @@ class FinanceRecord < ActiveRecord::Base
   has_many :docs
   has_many :notes
   before_create :assign_sno
-  belongs_to :whodidit, class_name: "User", foreign_key: :whodunnit_id 
+  belongs_to :whodidit, class_name: "User", foreign_key: :whodunnit_id
 
   has_paper_trail # as dictated by paper_trail gem
 
@@ -36,7 +36,7 @@ class FinanceRecord < ActiveRecord::Base
   # Returns all versions of this finance record
   def history
     finance_records = []
-    for version in self.versions
+    for version in self.versions.reverse
       finance_records << self.version_at(version.created_at)
     end
     finance_records
