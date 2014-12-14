@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214064620) do
+ActiveRecord::Schema.define(version: 20141214090654) do
 
   create_table "books", force: true do |t|
     t.string   "name"
@@ -86,8 +86,9 @@ ActiveRecord::Schema.define(version: 20141214064620) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "time"
-    t.integer  "sno",         default: 0
+    t.integer  "sno",          default: 0
     t.integer  "contact_id"
+    t.integer  "whodunnit_id"
   end
 
   add_index "finance_records", ["book_id"], name: "index_finance_records_on_book_id"

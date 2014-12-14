@@ -1,10 +1,12 @@
 %tr{class: record_color(version_view)}
   %td= "##{version_view.sno}"
   %td= version_view.time.to_s(:short)
-  %td= link_to version_view.description, company_book_finance_record_path(version_view.book.company,
-  version_view.book, version_view)
+  %td= version_view.description
   %td= version_view.amount
   %td= version_view.status.gsub(/_/, ' ').capitalize
   %td
     Updated on
     =  version_view.updated_at
+    %br
+    By
+    = version_view.whodidit.email

@@ -8,6 +8,7 @@ class FinanceRecord < ActiveRecord::Base
   has_many :docs
   has_many :notes
   before_create :assign_sno
+  belongs_to :whodidit, class_name: "User", foreign_key: :whodunnit_id 
 
   has_paper_trail # as dictated by paper_trail gem
 

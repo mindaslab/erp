@@ -54,6 +54,7 @@ class FinanceRecordsController < ApplicationController
   def create
     @record = FinanceRecord.new(record_params)
     @record.book = @book
+    @record.whodidit =  current_user
     respond_to do |format|
       if @record.save
         format.html { redirect_to company_book_finance_record_path(@company, @book, @record), notice: 'Record was successfully created.' }
@@ -68,6 +69,7 @@ class FinanceRecordsController < ApplicationController
   # PATCH/PUT /records/1
   # PATCH/PUT /records/1.json
   def update
+    @record.whodidit =  current_user
     respond_to do |format|
       if @record.update(record_params)
         format.html { redirect_to company_book_finance_record_path(@company, @book, @record), notice: 'Record was successfully updated.' }
