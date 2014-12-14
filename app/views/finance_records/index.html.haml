@@ -10,13 +10,7 @@
 .contact= render partial: "contact" if @contact
 
 %table.table
-  %tr
-    %th Sno
-    %th Time
-    %th{width: "40%"} Description
-    %th Amount
-    %th State
-    %th Actions
+  = render partial: "table_header"
   = render @records_page
 
 = paginate @records_page, :theme => 'twitter-bootstrap-3'
