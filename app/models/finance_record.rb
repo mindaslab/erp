@@ -9,6 +9,8 @@ class FinanceRecord < ActiveRecord::Base
   has_many :notes
   before_create :assign_sno
 
+  has_paper_trail # as dictated by paper_trail gem
+
   SearchableColumns = [:description]
   include Searchable
 

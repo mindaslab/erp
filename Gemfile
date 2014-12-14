@@ -85,3 +85,6 @@ gem "rails_admin"
 
 # Use email_validation
 gem 'email_validation'
+
+# Use paper_trail
+gem 'paper_trail', '~> 3.0.6'

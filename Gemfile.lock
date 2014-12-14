@@ -125,6 +125,9 @@ GEM
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
+    paper_trail (3.0.6)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -247,6 +250,7 @@ DEPENDENCIES
   kaminari
   less-rails
   minitest
+  paper_trail (~> 3.0.6)
   paperclip (~> 4.2)
   rails (= 4.1.6)
   rails_admin
