@@ -21,11 +21,8 @@ class FinanceRecordsController < ApplicationController
     @records = @records.where("time >= ?", date_to_db_string(params[:st], "beginning")) if params[:st].present?
     @records = @records.where("time <= ?", date_to_db_string(params[:et], "end")) if params[:et].present?
     @records_page = @records.order("time desc").page(params[:page]).per(50) # paginated records
-    revenue = @records.revenue.sum(:amount)
-    expense = @records.expense.sum(:amount)
-    @income = revenue - expense
-    @balance = @income + @records.capital.sum(:amount) - @records.draw.sum(:amount) +
-    @records.loan_taken.sum(:amount)
+    @income = Frr.income @records
+    @balance = Frr.balance @records
     respond_to do |format|
       format.html {}
       format.csv  { send_data @records.order(:sno).to_csv }
