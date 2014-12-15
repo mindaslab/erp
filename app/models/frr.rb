@@ -16,4 +16,12 @@ class Frr
     expense = records.expense.sum(:amount)
     revenue - expense
   end
+
+  def self.complex_search records, params
+    records = records.search(params[:s]) unless params[:s].empty? if params[:s]
+    records = records.send(params[:t]) if FinanceRecord.statuses.keys.index(params[:t])
+    records = records.where("time >= ?", date_to_db_string(params[:st], "beginning")) if params[:st].present?
+    records = records.where("time <= ?", date_to_db_string(params[:et], "end")) if params[:et].present?
+    records
+  end
 end

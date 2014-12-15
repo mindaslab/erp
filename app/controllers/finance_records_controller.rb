@@ -16,10 +16,7 @@ class FinanceRecordsController < ApplicationController
     else
       @records = @book.finance_records
     end
-    @records = @records.search(params[:s]) unless params[:s].empty? if params[:s]
-    @records = @records.send(params[:t]) if FinanceRecord.statuses.keys.index(params[:t])
-    @records = @records.where("time >= ?", date_to_db_string(params[:st], "beginning")) if params[:st].present?
-    @records = @records.where("time <= ?", date_to_db_string(params[:et], "end")) if params[:et].present?
+    @records = Frr.complex_search @records, params
     @records_page = @records.order("time desc").page(params[:page]).per(50) # paginated records
     @income = Frr.income @records
     @balance = Frr.balance @records
