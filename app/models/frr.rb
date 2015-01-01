@@ -17,6 +17,8 @@ class Frr
     revenue - expense
   end
 
+  ##
+  # Performs complex search depending on the paraams passed
   def self.complex_search records, params
     records = records.search(params[:s]) unless params[:s].empty? if params[:s]
     records = records.send(params[:t]) if FinanceRecord.statuses.keys.index(params[:t])
