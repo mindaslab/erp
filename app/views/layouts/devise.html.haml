@@ -4,9 +4,11 @@
   %body
     %nav.navbar.navbar-inverse.navbar-static-top{"role"=>"navigation"}
       = form_for(resource, :as => resource_name, :url => session_path(resource_name), html:{class: "navbar-form navbar-right"}) do |f|
-        = f.email_field :email, :autofocus => true, placeholder: "Email"
-        = f.password_field :password, placeholder: "Password"
-        = f.submit "Sign in", class: "btn btn-success"
+        %table
+          %tr
+            %td= f.email_field :email, :autofocus => true, placeholder: "Email"
+            %td= f.password_field :password, placeholder: "Password"
+            %td= f.submit "Sign in", class: "btn btn-success"
         - if devise_mapping.rememberable?
           .white-text
             = f.check_box :remember_me
