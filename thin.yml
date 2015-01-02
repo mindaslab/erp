@@ -1,0 +1,9 @@
+chdir: /home/erp
+environment: production
+daemonize: true
+timeout: 30
+port: 5000
+max_persistent_conns: 512
+wait: 30
+onebyone: true
+servers: 2

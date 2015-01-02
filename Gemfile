@@ -91,4 +91,10 @@ gem 'email_validation'
 gem 'paper_trail', '~> 3.0.6'
 
 # Use puma
-gem "puma"
+group :development, :test do
+  gem "puma"
+end
+
+group :production do
+  gem "thin"
+end
