@@ -3,7 +3,7 @@
   %td= finance_record.time.to_s(:short)
   %td= link_to finance_record.description, company_book_finance_record_path(finance_record.book.company,
   finance_record.book, finance_record)
-  %td= finance_record.amount
+  %td.right= finance_record.amount
   %td= finance_record.status.gsub(/_/, ' ').capitalize
   %td
     = link_to raw("<i class='glyphicon glyphicon-pencil'></i> #{finance_record.notes.count} &nbsp; <i class='glyphicon glyphicon-download'></i> #{finance_record.docs.count} &nbsp; <i class='glyphicon glyphicon-time'></i> #{finance_record.versions.count} "),
