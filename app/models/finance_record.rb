@@ -11,6 +11,7 @@ class FinanceRecord < ActiveRecord::Base
   belongs_to :whodidit, class_name: "User", foreign_key: :whodunnit_id
 
   validates :amount, presence: true, numericality: true
+  validate :amount_cant_be_negative
 
   has_paper_trail # as dictated by paper_trail gem
 
@@ -47,5 +48,9 @@ class FinanceRecord < ActiveRecord::Base
   private
   def assign_sno
     self.sno = self.book.finance_records.maximum(:sno).to_i + 1
+  end
+
+  def amount_cant_be_negative
+    errors.add(:amount, " can't be negative") if amount < 0
   end
 end
