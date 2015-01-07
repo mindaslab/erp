@@ -10,6 +10,8 @@ class FinanceRecord < ActiveRecord::Base
   before_create :assign_sno
   belongs_to :whodidit, class_name: "User", foreign_key: :whodunnit_id
 
+  validates :amount, presence: true, numericality: true
+
   has_paper_trail # as dictated by paper_trail gem
 
   SearchableColumns = [:description]
