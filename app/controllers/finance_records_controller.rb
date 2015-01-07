@@ -17,7 +17,7 @@ class FinanceRecordsController < ApplicationController
       @records = @book.finance_records
     end
     @records = Frr.complex_search @records, params
-    @records_page = @records.order("time desc").page(params[:page]).per(50) # paginated records
+    @records_page = @records.order("time desc").page(params[:page]).per(20) # paginated records
     @income = Frr.income @records
     @balance = Frr.balance @records
     respond_to do |format|
