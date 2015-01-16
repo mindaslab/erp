@@ -98,3 +98,6 @@ end
 group :production do
   gem "thin"
 end
+
+# Use aws-sdk
+gem "aws-sdk"
