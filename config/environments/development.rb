@@ -41,7 +41,7 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :hash_secret => "longSecretStringChangeItForSecurity",
     :url => "/system/:class/:id/:hash.:extension",
-    :storage => :s3,
+    # :storage => :s3,
     :s3_host_name => 'amazon_host_name', # or whatever your region host name is
     :s3_credentials => {
       :bucket => 'amazon_bucket',
