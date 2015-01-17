@@ -37,7 +37,7 @@ Rails.application.configure do
 
   # added for devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  # https://s3-ap-southeast-1.amazonaws.com/gqw78rtdsp/docs/16/33b5cd1946be519f9db70e98314ed058911146d8.gif
+  
   config.paperclip_defaults = {
     :hash_secret => "longSecretStringChangeItForSecurity",
     :url => "/system/:class/:id/:hash.:extension",
