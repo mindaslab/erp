@@ -1,10 +1,12 @@
 = form_for(@company, html:{class: "form-horizontal"}) do |f|
   - if @company.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
-      %ul
-        - @company.errors.full_messages.each do |msg|
-          %li= msg
+    .field.form-group
+      .col-sm-6.col-md-offset-2
+        #error_explanation
+          %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
+          %ul
+            - @company.errors.full_messages.each do |msg|
+              %li= msg
 
   .field.form-group
     = f.label :name, class: "col-sm-2 control-label"

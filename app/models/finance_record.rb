@@ -51,6 +51,6 @@ class FinanceRecord < ActiveRecord::Base
   end
 
   def amount_cant_be_negative
-    errors.add(:amount, " can't be negative") if amount < 0
+    errors.add(:amount, " can't be negative") if amount.present? and amount < 0
   end
 end
