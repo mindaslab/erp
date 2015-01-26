@@ -31,6 +31,9 @@ class FinanceRecord < ActiveRecord::Base
     end
   end
 
+  ##
+  # Returns the transaction type name like
+  # Revenue, Pending Income....
   def transaction
     self.status.gsub(/_/, " ").capitalize
   end
@@ -51,6 +54,6 @@ class FinanceRecord < ActiveRecord::Base
   end
 
   def amount_cant_be_negative
-    errors.add(:amount, " should be greater than zero") if amount.present? and amount < 0
+    errors.add(:amount, " should be greater than zero.") if amount.present? and amount < 0
   end
 end
