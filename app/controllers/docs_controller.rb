@@ -32,17 +32,16 @@ class DocsController < ApplicationController
   def destroy
     @doc.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: "Document deleted." }
+      format.html { redirect_to company_book_finance_record_path(@company,
+        @book, @record) , notice: "Document deleted." }
       format.json { head :no_content }
     end
   end
 
   def download
     if Rails.application.config.paperclip_defaults[:storage] != :s3
-      puts "*" * 50
       send_file File.open(@doc.file.path), filename: @doc.file_file_name
     else
-      puts "#" * 50
       file_contents = open(@doc.file.url) { |f| f.read }
       send_data file_contents, filename: @doc.file_file_name, type: @doc.file_content_type
     end
