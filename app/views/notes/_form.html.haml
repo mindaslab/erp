@@ -7,6 +7,6 @@
           %li= msg
 
   .field
-    = f.text_area :content, placeholder: "Type note here."
+    = f.text_area :content, placeholder: "Type note here.", id: "note-content"
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: "btn btn-default"
