@@ -2,7 +2,7 @@
   %td= "##{version_view.sno}"
   %td= version_view.time.to_s(:short)
   %td= version_view.description
-  %td= version_view.amount
+  %td.right= version_view.amount
   %td= version_view.status.gsub(/_/, ' ').capitalize
   %td
     Updated on

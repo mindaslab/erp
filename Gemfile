@@ -101,3 +101,6 @@ end
 
 # Use aws-sdk
 gem "aws-sdk"
+
+# Use money
+gem "money"
