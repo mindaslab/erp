@@ -18,7 +18,7 @@
       %p= @record.description
     %p
       %b Status:
-      = @record.status
+      = @record.transaction
     %p
       = link_to "Edit", edit_company_book_finance_record_path(@company, @book, @record),
       class: "btn btn-xs btn-warning"
