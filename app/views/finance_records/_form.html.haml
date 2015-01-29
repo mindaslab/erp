@@ -10,7 +10,7 @@
 
   .field.form-group
     = f.label :amount, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-4
       = f.text_field :amount, class: "form-control"
   .field.form-group
     = f.label :time, class: "col-sm-2 control-label"
@@ -18,12 +18,12 @@
       = f.datetime_select :time, class: "form-control"
   .field.form-group
     = f.label :description, class: "col-sm-2 control-label"
-    .col-sm-6
+    .col-sm-4
       = f.text_area :description, class: "form-control"
   .field.form-group
     = f.label :status, class: "col-sm-2 control-label"
-    .col-sm-6
-      = f.select :status, record_status_options, class: "form-control"
+    .col-sm-4
+      = f.select :status, record_status_options, {}, class: "form-control"
   .actions.col-sm-offset-2.col-sm-6
     = f.submit 'Save', class: "btn btn-default"
 
